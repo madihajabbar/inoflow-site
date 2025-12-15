@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>inoflow</title>
+
+<!-- Satoshi font (closest match) -->
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#05070c;
+  --text:#ffffff;
+  --muted:#9aa3b2;
+  --accent:#7db7ff;
+  --glass:rgba(20,25,40,.65);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Satoshi',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow:hidden;
+}
+
+/* CANVAS */
+canvas{
+  position:fixed;
+  inset:0;
+  z-index:-3;
+}
+
+/* VIGNETTE */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at center, transparent 30%, #05070c 78%);
+  z-index:-1;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:24px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:26px;
+  padding:10px 22px;
+  background:var(--glass);
+  backdrop-filter:blur(18px);
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  z-index:10;
+}
+
+nav a{
+  font-size:14px;
+  font-weight:500;
+  color:rgba(255,255,255,.7);
+  text-decoration:none;
+  transition:color .3s ease;
+}
+
+nav a:hover{color:#fff}
+nav a:last-child{color:var(--accent)}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:0 24px;
+}
+
+.hero-inner{
+  max-width:1200px;
+}
+
+h1{
+  font-size:clamp(56px,7.5vw,108px);
+  font-weight:500;
+  line-height:1.04;
+  letter-spacing:-0.035em;
+}
+
+h1 span{color:var(--accent)}
+
+.subtitle{
+  margin-top:28px;
+  font-size:17px;
+  color:var(--muted);
+}
+
+/* BUTTONS */
+.actions{
+  margin-top:44px;
+  display:flex;
+  gap:14px;
+  justify-content:center;
+}
+
+.btn{
+  padding:13px 26px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:500;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.02);
+  backdrop-filter:blur(6px);
+  color:#fff;
+  cursor:pointer;
+  transition:all .35s ease;
+}
+
+.btn:hover{
+  background:rgba(255,255,255,.08);
+}
+
+.btn.primary{
+  background:rgba(125,183,255,.18);
+  border-color:rgba(125,183,255,.45);
+}
+
+.btn.primary:hover{
+  background:rgba(125,183,255,.28);
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<nav>
+  <a href="#">Process</a>
+  <a href="#">Services</a>
+  <a href="#">Plans</a>
+  <a href="#">Team</a>
+  <a href="#">Contact ↗</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>
+      Elevate Your Digital<br>
+      Presence <span>Worldwide.</span>
+    </h1>
+
+    <p class="subtitle">
+      We are a digital agency that boosts businesses with cutting-edge AI
+      and innovative strategies.
+    </p>
+
+    <div class="actions">
+      <button class="btn">Our process</button>
+      <button class="btn primary">Get in touch ↗</button>
+    </div>
+  </div>
+</section>
+
+<script>
+const canvas=document.getElementById("bg");
+const ctx=canvas.getContext("2d");
+let w,h,particles=[];
+
+function resize(){
+  w=canvas.width=window.innerWidth;
+  h=canvas.height=window.innerHeight;
+}
+window.addEventListener("resize",resize);
+resize();
+
+for(let i=0;i<120;i++){
+  particles.push({
+    x:Math.random()*w,
+    y:Math.random()*h,
+    r:Math.random()*1.4,
+    vx:(Math.random()-.5)*.15,
+    vy:(Math.random()-.5)*.15,
+    o:Math.random()*.6
+  });
+}
+
+function drawGlow(){
+  const g=ctx.createRadialGradient(w/2,h/2,0,w/2,h/2,420);
+  g.addColorStop(0,"rgba(125,183,255,.35)");
+  g.addColorStop(.5,"rgba(125,183,255,.12)");
+  g.addColorStop(1,"transparent");
+  ctx.fillStyle=g;
+  ctx.fillRect(0,0,w,h);
+}
+
+function animate(){
+  ctx.clearRect(0,0,w,h);
+
+  drawGlow();
+
+  for(const p of particles){
+    p.x+=p.vx;
+    p.y+=p.vy;
+    if(p.x<0||p.x>w)p.vx*=-1;
+    if(p.y<0||p.y>h)p.vy*=-1;
+    ctx.fillStyle=`rgba(255,255,255,${p.o})`;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+  }
+
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
