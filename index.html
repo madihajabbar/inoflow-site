@@ -191,6 +191,90 @@ h1 span{color:var(--accent)}
   font-size:14px;
   margin:24px 0;
 }
+
+  /* ================= AI AUTOMATION GRID ================= */
+
+.automation-section {
+  padding: 140px 24px;
+}
+
+.automation-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.automation-title {
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  margin-bottom: 60px;
+}
+
+.automation-title span {
+  color: var(--accent);
+}
+
+.automation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.automation-card {
+  position: relative;
+  padding: 36px;
+  border-radius: 24px;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.01)
+  );
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(14px);
+  transition: all .6s cubic-bezier(.2,.8,.2,1);
+}
+
+.automation-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  background: radial-gradient(
+    circle at top left,
+    rgba(125,183,255,.18),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity .6s ease;
+  pointer-events: none;
+}
+
+.automation-card:hover {
+  transform: translateY(-6px);
+}
+
+.automation-card:hover::before {
+  opacity: 1;
+}
+
+.automation-step {
+  font-size: 14px;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.automation-card h3 {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.automation-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
 </style>
 </head>
 
@@ -242,6 +326,66 @@ h1 span{color:var(--accent)}
     </p>
   </div>
 </section>
+
+  <section class="automation-section">
+  <div class="automation-inner reveal">
+
+    <h2 class="automation-title">
+      AI automation that<br>
+      <span>runs your business</span>
+    </h2>
+
+    <div class="automation-grid">
+
+      <div class="automation-card">
+        <div class="automation-step">01</div>
+        <h3>AI Receptionists</h3>
+        <p>
+          Intelligent agents that respond instantly to leads, answer questions,
+          qualify prospects, and route conversations across web, SMS, and messaging platforms.
+        </p>
+      </div>
+
+      <div class="automation-card">
+        <div class="automation-step">02</div>
+        <h3>Lead Qualification & Routing</h3>
+        <p>
+          We automate lead scoring, tagging, and routing so the right opportunities
+          reach the right team — without manual review.
+        </p>
+      </div>
+
+      <div class="automation-card">
+        <div class="automation-step">03</div>
+        <h3>CRM & Pipeline Automation</h3>
+        <p>
+          Every interaction updates your CRM automatically — contacts, deal stages,
+          notes, and follow-ups stay perfectly in sync.
+        </p>
+      </div>
+
+      <div class="automation-card">
+        <div class="automation-step">04</div>
+        <h3>Internal AI Agents</h3>
+        <p>
+          AI agents handle internal tasks like reporting, summaries, task creation,
+          and operational workflows — reducing overhead across teams.
+        </p>
+      </div>
+
+      <div class="automation-card">
+        <div class="automation-step">05</div>
+        <h3>End-to-End Automation</h3>
+        <p>
+          We connect tools, data, and AI models into a single automated system
+          that runs continuously in the background.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
 <script>
 /* ================= CANVAS BACKGROUND ================= */
