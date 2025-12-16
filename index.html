@@ -275,37 +275,44 @@ h1 span{color:var(--accent)}
   color: var(--muted);
 }
 
-  /* ================= CASE STUDIES ================= */
+/* ================= TESTIMONIALS ================= */
 
-.case-section {
-  padding: 140px 24px;
+.testimonial-section {
+  padding: 140px 0;
+  overflow: hidden;
 }
 
-.case-inner {
+.testimonial-inner {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 24px;
 }
 
-.case-title {
+.testimonial-title {
   font-size: clamp(42px, 6vw, 72px);
   font-weight: 500;
   letter-spacing: -0.03em;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
 }
 
-.case-title span {
+.testimonial-title span {
   color: var(--accent);
 }
 
-.case-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+.testimonial-track {
+  display: flex;
   gap: 32px;
+  width: max-content;
+  animation: testimonialScroll 50s linear infinite;
 }
 
-.case-card {
-  position: relative;
-  padding: 36px;
+.testimonial-track:hover {
+  animation-play-state: paused;
+}
+
+.testimonial-card {
+  width: 420px;
+  padding: 40px;
   border-radius: 24px;
   background: linear-gradient(
     180deg,
@@ -314,59 +321,30 @@ h1 span{color:var(--accent)}
   );
   border: 1px solid rgba(255,255,255,0.08);
   backdrop-filter: blur(14px);
-  transition: all .6s cubic-bezier(.2,.8,.2,1);
+  color: #fff;
+  transition: transform .6s cubic-bezier(.2,.8,.2,1);
 }
 
-.case-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 24px;
-  background: radial-gradient(
-    circle at top left,
-    rgba(125,183,255,.18),
-    transparent 60%
-  );
-  opacity: 0;
-  transition: opacity .6s ease;
-  pointer-events: none;
-}
-
-.case-card:hover {
+.testimonial-card:hover {
   transform: translateY(-6px);
 }
 
-.case-card:hover::before {
-  opacity: 1;
-}
-
-.case-metric {
-  font-size: 14px;
-  color: var(--accent);
-  margin-bottom: 12px;
-}
-
-.case-card h3 {
-  font-size: 22px;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-
-.case-card p {
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--muted);
+.testimonial-quote {
+  font-size: 20px;
+  line-height: 1.5;
   margin-bottom: 18px;
 }
 
-.case-tag {
-  display: inline-block;
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 13px;
-  background: rgba(125,183,255,.12);
-  color: var(--accent);
+.testimonial-sub {
+  font-size: 14px;
+  color: var(--muted);
 }
+
+@keyframes testimonialScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 
 </style>
 </head>
@@ -479,49 +457,81 @@ h1 span{color:var(--accent)}
   </div>
 </section>
 
-  <section class="case-section">
-  <div class="case-inner reveal">
+  <section class="testimonial-section">
+  <div class="testimonial-inner reveal">
 
-    <h2 class="case-title">
-      Real results from<br>
-      <span>AI automation</span>
+    <h2 class="testimonial-title">
+      What our <span>clients say</span>
     </h2>
 
-    <div class="case-grid">
+    <div class="testimonial-track">
 
-      <div class="case-card">
-        <div class="case-metric">↑ 3× Lead Response Speed</div>
-        <h3>Service Business Automation</h3>
-        <p>
-          Deployed an AI receptionist and automated follow-ups that reduced response
-          time from hours to seconds and increased booked calls.
-        </p>
-        <span class="case-tag">AI Receptionist</span>
+      <!-- SET 1 -->
+      <div class="testimonial-card">
+        <div class="testimonial-quote">
+          “The automation completely changed how we handle leads.
+          Responses are instant and nothing falls through the cracks.”
+        </div>
+        <div class="testimonial-sub">
+          Service-based business owner
+        </div>
       </div>
 
-      <div class="case-card">
-        <div class="case-metric">↓ 60% Manual Work</div>
-        <h3>CRM & Pipeline Automation</h3>
-        <p>
-          Automated lead qualification, deal updates, and internal notifications —
-          eliminating repetitive CRM work across the team.
-        </p>
-        <span class="case-tag">CRM Automation</span>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">
+          “We removed hours of manual work every week.
+          The system just runs in the background.”
+        </div>
+        <div class="testimonial-sub">
+          Operations manager
+        </div>
       </div>
 
-      <div class="case-card">
-        <div class="case-metric">↑ Consistent Follow-Ups</div>
-        <h3>End-to-End Workflow System</h3>
-        <p>
-          Built a fully automated system connecting forms, messaging, AI, and internal
-          tools to run operations hands-free.
-        </p>
-        <span class="case-tag">Workflow Automation</span>
+      <div class="testimonial-card">
+        <div class="testimonial-quote">
+          “Setup was clean, fast, and tailored to our workflow.
+          The ROI was obvious within the first month.”
+        </div>
+        <div class="testimonial-sub">
+          Founder, small business
+        </div>
+      </div>
+
+      <!-- DUPLICATE SET FOR LOOP -->
+      <div class="testimonial-card">
+        <div class="testimonial-quote">
+          “The automation completely changed how we handle leads.
+          Responses are instant and nothing falls through the cracks.”
+        </div>
+        <div class="testimonial-sub">
+          Service-based business owner
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote">
+          “We removed hours of manual work every week.
+          The system just runs in the background.”
+        </div>
+        <div class="testimonial-sub">
+          Operations manager
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-quote">
+          “Setup was clean, fast, and tailored to our workflow.
+          The ROI was obvious within the first month.”
+        </div>
+        <div class="testimonial-sub">
+          Founder, small business
+        </div>
       </div>
 
     </div>
   </div>
 </section>
+
 
 
 <script>
