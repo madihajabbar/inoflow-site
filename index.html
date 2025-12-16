@@ -345,6 +345,67 @@ h1 span{color:var(--accent)}
   to { transform: translateX(-50%); }
 }
 
+  /* ================= FINAL CTA ================= */
+
+.final-cta {
+  padding: 160px 24px 120px;
+  text-align: center;
+}
+
+.final-cta h2 {
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  margin-bottom: 18px;
+}
+
+.final-cta h2 span {
+  color: var(--accent);
+}
+
+.final-cta p {
+  max-width: 520px;
+  margin: 0 auto 40px;
+  font-size: 17px;
+  color: var(--muted);
+}
+
+.final-cta .btn {
+  margin-top: 10px;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+  padding: 40px 24px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .3s ease;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
 
 </style>
 </head>
@@ -531,6 +592,37 @@ h1 span{color:var(--accent)}
     </div>
   </div>
 </section>
+
+  <section class="final-cta reveal">
+  <h2>
+    Ready to <span>automate</span><br>
+    your business?
+  </h2>
+
+  <p>
+    Let’s talk about your workflows, bottlenecks, and where AI automation
+    can save you time, money, and manual effort.
+  </p>
+
+  <button class="btn primary">
+    Book a call ↗
+  </button>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      © 2025 inoflow. All rights reserved.
+    </div>
+
+    <div class="footer-links">
+      <a href="#">Process</a>
+      <a href="#">Services</a>
+      <a href="#">Team</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+</footer>
 
 
 
