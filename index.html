@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>inoflow</title>
 
-<!-- Satoshi font (closest match) -->
+<!-- Font -->
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap" rel="stylesheet">
 
-  <style>
+<style>
 :root{
   --bg:#05070c;
   --text:#ffffff;
@@ -20,69 +20,34 @@
 /* RESET */
 *{margin:0;padding:0;box-sizing:border-box}
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   font-family:'Satoshi',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
   background:var(--bg);
   color:var(--text);
-  overflow-x: hidden;
+  overflow-x:hidden;
 }
 
-
-/* SCROLL FADE */
-.fade-up {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 1.2s cubic-bezier(.2,.8,.2,1);
-}
-
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* SECOND HERO SECTION */
-.section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 0 24px;
-}
-
-.section-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  border-radius: 999px;
-  background: rgba(125,183,255,.15);
-  border: 1px solid rgba(125,183,255,.35);
-  color: var(--accent);
-  font-size: 14px;
-  margin: 24px 0;
-}
-
-/* CANVAS */
+/* ================= BACKGROUND ================= */
 canvas{
   position:fixed;
   inset:0;
   z-index:-3;
 }
 
-/* VIGNETTE */
+/* vignette */
 body::before{
   content:"";
   position:fixed;
   inset:0;
-  background:radial-gradient(circle at center, transparent 30%, #05070c 78%);
+  background:radial-gradient(circle at center, transparent 25%, #05070c 75%);
   z-index:-1;
 }
 
-/* NAV */
+/* ================= NAV ================= */
 nav{
   position:fixed;
   top:24px;
@@ -96,6 +61,8 @@ nav{
   border-radius:999px;
   border:1px solid rgba(255,255,255,.12);
   z-index:10;
+  opacity:0;
+  animation:fadeDown .8s ease forwards .4s;
 }
 
 nav a{
@@ -109,9 +76,14 @@ nav a{
 nav a:hover{color:#fff}
 nav a:last-child{color:var(--accent)}
 
-/* HERO */
+@keyframes fadeDown{
+  from{opacity:0;transform:translate(-50%,-10px)}
+  to{opacity:1;transform:translate(-50%,0)}
+}
+
+/* ================= HERO ================= */
 .hero{
-  height:100vh;
+  min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -121,6 +93,13 @@ nav a:last-child{color:var(--accent)}
 
 .hero-inner{
   max-width:1200px;
+  opacity:0;
+  transform:translateY(40px);
+  animation:heroIn 1s cubic-bezier(.2,.8,.2,1) forwards .6s;
+}
+
+@keyframes heroIn{
+  to{opacity:1;transform:translateY(0)}
 }
 
 h1{
@@ -138,7 +117,7 @@ h1 span{color:var(--accent)}
   color:var(--muted);
 }
 
-/* BUTTONS */
+/* buttons */
 .actions{
   margin-top:44px;
   display:flex;
@@ -156,11 +135,12 @@ h1 span{color:var(--accent)}
   backdrop-filter:blur(6px);
   color:#fff;
   cursor:pointer;
-  transition:all .35s ease;
+  transition:all .35s cubic-bezier(.2,.8,.2,1);
 }
 
 .btn:hover{
   background:rgba(255,255,255,.08);
+  transform:translateY(-2px);
 }
 
 .btn.primary{
@@ -171,9 +151,47 @@ h1 span{color:var(--accent)}
 .btn.primary:hover{
   background:rgba(125,183,255,.28);
 }
-  
-  </style>
-  
+
+/* ================= SECTIONS ================= */
+.section{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:0 24px;
+}
+
+.section-inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+/* scroll reveal */
+.reveal{
+  opacity:0;
+  transform:translateY(50px);
+  filter:blur(4px);
+  transition:all 1.2s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+  filter:blur(0);
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 18px;
+  border-radius:999px;
+  background:rgba(125,183,255,.15);
+  border:1px solid rgba(125,183,255,.35);
+  color:var(--accent);
+  font-size:14px;
+  margin:24px 0;
+}
+</style>
 </head>
 
 <body>
@@ -181,11 +199,11 @@ h1 span{color:var(--accent)}
 <canvas id="bg"></canvas>
 
 <nav>
-  <a href="#">Process</a>
-  <a href="#">Services</a>
-  <a href="#">Plans</a>
-  <a href="#">Team</a>
-  <a href="#">Contact ↗</a>
+  <a href="#process">Process</a>
+  <a href="#services">Services</a>
+  <a href="#plans">Plans</a>
+  <a href="#team">Team</a>
+  <a href="#contact">Contact ↗</a>
 </nav>
 
 <section class="hero">
@@ -197,7 +215,7 @@ h1 span{color:var(--accent)}
 
     <p class="subtitle">
       We are a digital agency that boosts businesses with cutting-edge AI
-      and innovative strategies.
+      and modern automation.
     </p>
 
     <div class="actions">
@@ -207,7 +225,26 @@ h1 span{color:var(--accent)}
   </div>
 </section>
 
+<section class="section">
+  <div class="section-inner reveal">
+    <h1>
+      We build <span>AI automation systems</span><br>
+      that replace manual work<br>
+      and scale execution.
+    </h1>
+
+    <div class="badge">✨ AI Automation Agency</div>
+
+    <p class="subtitle">
+      inoflow designs intelligent workflows for lead qualification,
+      CRM updates, follow-ups, internal operations, and customer communication —
+      all running autonomously.
+    </p>
+  </div>
+</section>
+
 <script>
+/* ================= CANVAS BACKGROUND ================= */
 const canvas=document.getElementById("bg");
 const ctx=canvas.getContext("2d");
 let w,h,particles=[];
@@ -219,19 +256,19 @@ function resize(){
 window.addEventListener("resize",resize);
 resize();
 
-for(let i=0;i<120;i++){
+for(let i=0;i<140;i++){
   particles.push({
     x:Math.random()*w,
     y:Math.random()*h,
-    r:Math.random()*1.4,
+    r:Math.random()*1.5,
     vx:(Math.random()-.5)*.15,
     vy:(Math.random()-.5)*.15,
     o:Math.random()*.6
   });
 }
 
-function drawGlow(){
-  const g=ctx.createRadialGradient(w/2,h/2,0,w/2,h/2,420);
+function glow(){
+  const g=ctx.createRadialGradient(w/2,h/2,0,w/2,h/2,460);
   g.addColorStop(0,"rgba(125,183,255,.35)");
   g.addColorStop(.5,"rgba(125,183,255,.12)");
   g.addColorStop(1,"transparent");
@@ -241,8 +278,7 @@ function drawGlow(){
 
 function animate(){
   ctx.clearRect(0,0,w,h);
-
-  drawGlow();
+  glow();
 
   for(const p of particles){
     p.x+=p.vx;
@@ -254,40 +290,20 @@ function animate(){
     ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
     ctx.fill();
   }
-
   requestAnimationFrame(animate);
 }
 animate();
-</script>
 
-<section class="section">
-  <div class="section-inner fade-up">
-    <h1>
-      We design <span>AI automation systems</span><br>
-      that replace manual work<br>
-      and scale execution.
-    </h1>
-
-    <div class="badge">✨ AI Automation Agency</div>
-
-    <p class="subtitle">
-      inoflow builds intelligent workflows that handle lead qualification,
-      follow-ups, CRM updates, internal operations, and customer communication —
-      all without human intervention.
-    </p>
-  </div>
-</section>
-
-<script>
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
+/* ================= SCROLL REVEAL ================= */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add("visible");
     }
   });
-}, { threshold: 0.2 });
+},{threshold:.2});
 
-document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 </script>
 
 </body>
