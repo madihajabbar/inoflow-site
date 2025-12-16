@@ -15,6 +15,45 @@
   --muted:#9aa3b2;
   --accent:#7db7ff;
   --glass:rgba(20,25,40,.65);
+
+  /* SCROLL FADE */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.2s cubic-bezier(.2,.8,.2,1);
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* SECOND HERO SECTION */
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(125,183,255,.15);
+  border: 1px solid rgba(125,183,255,.35);
+  color: var(--accent);
+  font-size: 14px;
+  margin: 24px 0;
+}
+
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -216,6 +255,36 @@ function animate(){
   requestAnimationFrame(animate);
 }
 animate();
+</script>
+
+<section class="section">
+  <div class="section-inner fade-up">
+    <h1>
+      We design <span>AI automation systems</span><br>
+      that replace manual work<br>
+      and scale execution.
+    </h1>
+
+    <div class="badge">✨ AI Automation Agency</div>
+
+    <p class="subtitle">
+      inoflow builds intelligent workflows that handle lead qualification,
+      follow-ups, CRM updates, internal operations, and customer communication —
+      all without human intervention.
+    </p>
+  </div>
+</section>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
 </script>
 
 </body>
