@@ -406,11 +406,39 @@ footer {
   color: #fff;
 }
 
+/* ================= CUSTOM CURSOR ================= */
+body {
+  cursor: none;
+}
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(125,183,255,0.9),
+    rgba(125,183,255,0.6),
+    rgba(125,183,255,0.2)
+  );
+  box-shadow:
+    0 0 12px rgba(125,183,255,0.8),
+    0 0 32px rgba(125,183,255,0.45);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease-out;
+}
 
 </style>
 </head>
 
 <body>
+
+<div class="cursor"></div>
 
 <canvas id="bg"></canvas>
 
@@ -716,6 +744,32 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.2 });
 
 document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+/* ================= CUSTOM CURSOR LOGIC ================= */
+const cursor = document.querySelector(".cursor");
+
+let mouseX = 0;
+let mouseY = 0;
+let currentX = 0;
+let currentY = 0;
+
+window.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animateCursor() {
+  currentX += (mouseX - currentX) * 0.18;
+  currentY += (mouseY - currentY) * 0.18;
+
+  cursor.style.left = currentX + "px";
+  cursor.style.top = currentY + "px";
+
+  requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
+
 </script>
 
 
