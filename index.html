@@ -626,67 +626,98 @@ footer {
 
 
 <script>
-/* ================= CANVAS BACKGROUND ================= */
-const canvas=document.getElementById("bg");
-const ctx=canvas.getContext("2d");
-let w,h,particles=[];
+/* ================= ADVANCED CANVAS BACKGROUND ================= */
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
 
-function resize(){
-  w=canvas.width=window.innerWidth;
-  h=canvas.height=window.innerHeight;
+let w, h, particles = [];
+let t = 0;
+let mouse = { x: 0, y: 0 };
+
+function resize() {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
 }
-window.addEventListener("resize",resize);
+window.addEventListener("resize", resize);
 resize();
 
-for(let i=0;i<140;i++){
+window.addEventListener("mousemove", e => {
+  mouse.x = e.clientX / w - 0.5;
+  mouse.y = e.clientY / h - 0.5;
+});
+
+/* CREATE PARTICLES */
+const COUNT = 220;
+for (let i = 0; i < COUNT; i++) {
   particles.push({
-    x:Math.random()*w,
-    y:Math.random()*h,
-    r:Math.random()*1.5,
-    vx:(Math.random()-.5)*.15,
-    vy:(Math.random()-.5)*.15,
-    o:Math.random()*.6
+    x: Math.random() * w,
+    y: Math.random() * h,
+    r: Math.random() * 1.8 + 0.3,
+    speed: Math.random() * 0.6 + 0.2,
+    angle: Math.random() * Math.PI * 2,
+    drift: Math.random() * 0.002 + 0.001,
+    o: Math.random() * 0.6 + 0.15
   });
 }
 
-function glow(){
-  const g=ctx.createRadialGradient(w/2,h/2,0,w/2,h/2,460);
-  g.addColorStop(0,"rgba(125,183,255,.35)");
-  g.addColorStop(.5,"rgba(125,183,255,.12)");
-  g.addColorStop(1,"transparent");
-  ctx.fillStyle=g;
-  ctx.fillRect(0,0,w,h);
+/* GLOW LAYER */
+function glow() {
+  const pulse = Math.sin(t * 0.01) * 80;
+  const g = ctx.createRadialGradient(
+    w / 2 + mouse.x * 120,
+    h / 2 + mouse.y * 120,
+    0,
+    w / 2,
+    h / 2,
+    520 + pulse
+  );
+
+  g.addColorStop(0, "rgba(125,183,255,.45)");
+  g.addColorStop(0.45, "rgba(125,183,255,.18)");
+  g.addColorStop(1, "transparent");
+
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, w, h);
 }
 
-function animate(){
-  ctx.clearRect(0,0,w,h);
+/* ANIMATE */
+function animate() {
+  ctx.clearRect(0, 0, w, h);
   glow();
 
-  for(const p of particles){
-    p.x+=p.vx;
-    p.y+=p.vy;
-    if(p.x<0||p.x>w)p.vx*=-1;
-    if(p.y<0||p.y>h)p.vy*=-1;
-    ctx.fillStyle=`rgba(255,255,255,${p.o})`;
+  t++;
+
+  for (const p of particles) {
+    p.angle += p.drift;
+    p.x += Math.cos(p.angle) * p.speed + mouse.x * 0.6;
+    p.y += Math.sin(p.angle) * p.speed + mouse.y * 0.6;
+
+    if (p.x < -50) p.x = w + 50;
+    if (p.x > w + 50) p.x = -50;
+    if (p.y < -50) p.y = h + 50;
+    if (p.y > h + 50) p.y = -50;
+
+    ctx.fillStyle = `rgba(255,255,255,${p.o})`;
     ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
     ctx.fill();
   }
+
   requestAnimationFrame(animate);
 }
+
 animate();
 
 /* ================= SCROLL REVEAL ================= */
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add("visible");
-    }
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add("visible");
   });
-},{threshold:.2});
+}, { threshold: 0.2 });
 
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 </script>
+
 
 </body>
 </html>
