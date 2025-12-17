@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,42 +51,22 @@ body::before{
 /* ================= NAV ================= */
 nav{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:10;
-  padding:22px 32px;
-  pointer-events:auto;
-}
-
-.nav-inner{
-  max-width:1400px;
-  margin:0 auto;
+  top:24px;
+  left:50%;
+  transform:translateX(-50%);
   display:flex;
-  align-items:center;
-  justify-content:space-between;
-
+  gap:26px;
+  padding:10px 22px;
   background:var(--glass);
   backdrop-filter:blur(18px);
-  border-radius:18px;
+  border-radius:999px;
   border:1px solid rgba(255,255,255,.12);
-  padding:14px 22px;
-
+  z-index:10;
   opacity:0;
   animation:fadeDown .8s ease forwards .4s;
 }
 
-.logo img{
-  height:28px;
-  display:block;
-}
-
-.nav-links{
-  display:flex;
-  gap:26px;
-}
-
-.nav-links a{
+nav a{
   font-size:14px;
   font-weight:500;
   color:rgba(255,255,255,.7);
@@ -93,9 +74,13 @@ nav{
   transition:color .3s ease;
 }
 
-.nav-links a:hover{color:#fff}
-.nav-links a:last-child{color:var(--accent)}
+nav a:hover{color:#fff}
+nav a:last-child{color:var(--accent)}
 
+@keyframes fadeDown{
+  from{opacity:0;transform:translate(-50%,-10px)}
+  to{opacity:1;transform:translate(-50%,0)}
+}
 
 /* ================= HERO ================= */
 .hero{
@@ -459,20 +444,11 @@ body {
 <canvas id="bg"></canvas>
 
 <nav>
-  <div class="nav-inner">
-    <div class="logo">
-      <img src="logo.png" alt="inoflow logo">
-    </div>
-
-    <div class="nav-links">
-      <a href="#process">Solutions</a>
-      <a href="#services">Problems</a>
-      <a href="#plans">Case Studies</a>
-      <a href="#contact">Book a Call ↗</a>
-    </div>
-  </div>
+  <a href="#process">Solutions</a>
+  <a href="#services">Problems</a>
+  <a href="#plans">Case Studies</a>
+  <a href="#contact">Book a Call ↗</a>
 </nav>
-
 
 <section class="hero">
   <div class="hero-inner">
@@ -846,3 +822,4 @@ window.addEventListener("scroll", () => {
 
 </body>
 </html>
+
