@@ -274,6 +274,47 @@ h1 span{color:var(--accent)}
   line-height: 1.6;
   color: var(--muted);
 }
+/* ================= BENTO LAYOUT ================= */
+
+.automation-bento{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  grid-auto-rows:260px;
+  gap:32px;
+}
+
+.bento-main{
+  grid-row:span 2;
+}
+
+.automation-card.wide{
+  grid-column:span 2;
+}
+
+/* refine spacing to feel editorial */
+.automation-card h3{
+  font-size:22px;
+  margin-bottom:14px;
+}
+
+.automation-card p{
+  font-size:15px;
+  line-height:1.6;
+}
+
+/* mobile */
+@media(max-width:900px){
+  .automation-bento{
+    grid-template-columns:1fr;
+    grid-auto-rows:auto;
+  }
+
+  .bento-main,
+  .automation-card.wide{
+    grid-column:span 1;
+    grid-row:span 1;
+  }
+}
 
 /* ================= TESTIMONIALS ================= */
 
@@ -486,64 +527,58 @@ body {
   </div>
 </section>
 
-  <section class="automation-section">
-  <div class="automation-inner reveal">
+ <div class="automation-bento">
 
-    <h2 class="automation-title">
-      AI automation that<br>
-      <span>runs your business</span>
-    </h2>
-
-    <div class="automation-grid">
-
-      <div class="automation-card">
-        <div class="automation-step">01</div>
-        <h3>AI Receptionists</h3>
-        <p>
-          Intelligent agents that respond instantly to leads, answer questions,
-          qualify prospects, and route conversations across web, SMS, and messaging platforms.
-        </p>
-      </div>
-
-      <div class="automation-card">
-        <div class="automation-step">02</div>
-        <h3>Lead Qualification & Routing</h3>
-        <p>
-          We automate lead scoring, tagging, and routing so the right opportunities
-          reach the right team — without manual review.
-        </p>
-      </div>
-
-      <div class="automation-card">
-        <div class="automation-step">03</div>
-        <h3>CRM & Pipeline Automation</h3>
-        <p>
-          Every interaction updates your CRM automatically — contacts, deal stages,
-          notes, and follow-ups stay perfectly in sync.
-        </p>
-      </div>
-
-      <div class="automation-card">
-        <div class="automation-step">04</div>
-        <h3>Internal AI Agents</h3>
-        <p>
-          AI agents handle internal tasks like reporting, summaries, task creation,
-          and operational workflows — reducing overhead across teams.
-        </p>
-      </div>
-
-      <div class="automation-card">
-        <div class="automation-step">05</div>
-        <h3>End-to-End Automation</h3>
-        <p>
-          We connect tools, data, and AI models into a single automated system
-          that runs continuously in the background.
-        </p>
-      </div>
-
-    </div>
+  <!-- BIG LEFT -->
+  <div class="automation-card bento-main">
+    <div class="automation-step">01</div>
+    <h3>AI Receptionists</h3>
+    <p>
+      Intelligent agents that respond instantly to leads, answer questions,
+      qualify prospects, and route conversations across web, SMS, and messaging platforms.
+    </p>
   </div>
-</section>
+
+  <!-- TOP RIGHT -->
+  <div class="automation-card">
+    <div class="automation-step">02</div>
+    <h3>Lead Qualification & Routing</h3>
+    <p>
+      We automate lead scoring, tagging, and routing so the right opportunities
+      reach the right team — without manual review.
+    </p>
+  </div>
+
+  <div class="automation-card">
+    <div class="automation-step">03</div>
+    <h3>CRM & Pipeline Automation</h3>
+    <p>
+      Every interaction updates your CRM automatically — contacts, deal stages,
+      notes, and follow-ups stay perfectly in sync.
+    </p>
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="automation-card wide">
+    <div class="automation-step">04</div>
+    <h3>Internal AI Agents</h3>
+    <p>
+      AI agents handle internal tasks like reporting, summaries, task creation,
+      and operational workflows — reducing overhead across teams.
+    </p>
+  </div>
+
+  <div class="automation-card wide">
+    <div class="automation-step">05</div>
+    <h3>End-to-End Automation</h3>
+    <p>
+      We connect tools, data, and AI models into a single automated system
+      that runs continuously in the background.
+    </p>
+  </div>
+
+</div>
+
 
   <section class="testimonial-section">
   <div class="testimonial-inner reveal">
