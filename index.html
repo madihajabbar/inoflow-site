@@ -80,6 +80,26 @@ nav a:last-child{color:var(--accent)}
   from{opacity:0;transform:translate(-50%,-10px)}
   to{opacity:1;transform:translate(-50%,0)}
 }
+/* logo layout */
+nav{
+  justify-content:space-between;
+}
+
+.nav-left{
+  display:flex;
+  align-items:center;
+}
+
+.nav-logo{
+  height:28px; /* matches launchwithelevate scale */
+  width:auto;
+  display:block;
+}
+
+.nav-right{
+  display:flex;
+  gap:26px;
+}
 
 /* ================= HERO ================= */
 .hero{
@@ -484,11 +504,18 @@ body {
 <canvas id="bg"></canvas>
 
 <nav>
-  <a href="#process">Solutions</a>
-  <a href="#services">Problems</a>
-  <a href="#plans">Case Studies</a>
-  <a href="#contact">Book a Call ↗</a>
+  <div class="nav-left">
+    <img src="logo.png" alt="Inoflow logo" class="nav-logo">
+  </div>
+
+  <div class="nav-right">
+    <a href="#solutions">Solutions</a>
+    <a href="#problems">Problems</a>
+    <a href="#casestudies">Case Studies</a>
+    <a href="#book">Book a Call ↗</a>
+  </div>
 </nav>
+
 
 <section class="hero">
   <div class="hero-inner">
@@ -678,10 +705,10 @@ body {
     </div>
 
     <div class="footer-links">
-      <a href="#">Process</a>
-      <a href="#">Services</a>
-      <a href="#">Team</a>
-      <a href="#">Contact</a>
+      <a href="#">Solutions</a>
+      <a href="#">Problems</a>
+      <a href="#">Case Studies</a>
+      <a href="#">Book</a>
     </div>
   </div>
 </footer>
