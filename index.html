@@ -81,6 +81,36 @@ nav a:last-child{color:var(--accent)}
   to{opacity:1;transform:translate(-50%,0)}
 }
 
+  nav{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+}
+
+/* LEFT LOGO */
+.nav-left{
+  display:flex;
+  align-items:center;
+}
+
+.nav-logo{
+  height:26px;      /* matches premium SaaS scale */
+  width:auto;
+  display:block;
+}
+
+/* CENTER LINKS */
+.nav-center{
+  display:flex;
+  justify-content:center;
+  gap:26px;
+}
+
+/* RIGHT SPACER (keeps center truly centered) */
+.nav-right{
+  width:26px;
+}
+
 /* ================= HERO ================= */
 .hero{
   min-height:100vh;
@@ -484,11 +514,20 @@ body {
 <canvas id="bg"></canvas>
 
 <nav>
-  <a href="#process">Solutions</a>
-  <a href="#services">Problems</a>
-  <a href="#plans">Case Studies</a>
-  <a href="#contact">Book a Call ↗</a>
+  <div class="nav-left">
+    <img src="logo.png" alt="Inoflow" class="nav-logo">
+  </div>
+
+  <div class="nav-center">
+    <a href="#process">Solutions</a>
+    <a href="#services">Problems</a>
+    <a href="#plans">Case Studies</a>
+    <a href="#contact">Book a Call ↗</a>
+  </div>
+
+  <div class="nav-right"></div>
 </nav>
+
 
 <section class="hero">
   <div class="hero-inner">
