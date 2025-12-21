@@ -209,7 +209,7 @@ h1 span{color:var(--accent)}
 /* ================= PROBLEMS SECTION ================= */
 
 .problems-section{
-  padding:140px 24px;
+  padding:160px 24px;
 }
 
 .problems-inner{
@@ -228,60 +228,106 @@ h1 span{color:var(--accent)}
   color:var(--accent);
 }
 
-.problems-grid{
+.problems-layout{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:28px;
+  grid-template-columns:1.1fr .9fr;
+  gap:80px;
+  align-items:center;
 }
 
-.problem-card{
-  position:relative;
-  padding:36px;
+/* LEFT SIDE */
+.problem-bubbles{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+
+.problem-bubble{
+  display:flex;
+  gap:18px;
+  padding:26px 30px;
   border-radius:22px;
   background:linear-gradient(
     180deg,
-    rgba(255,255,255,0.035),
-    rgba(255,255,255,0.01)
+    rgba(255,255,255,.05),
+    rgba(255,255,255,.015)
   );
-  border:1px solid rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,.08);
   backdrop-filter:blur(14px);
   transition:all .6s cubic-bezier(.2,.8,.2,1);
 }
 
-.problem-card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:22px;
-  background:radial-gradient(
-    circle at top left,
-    rgba(255,120,120,.18),
-    transparent 60%
-  );
-  opacity:0;
-  transition:.6s;
-  pointer-events:none;
+.problem-bubble span{
+  color:var(--accent);
+  font-size:14px;
+  font-weight:500;
+  min-width:28px;
 }
 
-.problem-card:hover{
+.problem-bubble h3{
+  font-size:20px;
+  font-weight:500;
+  margin-bottom:6px;
+}
+
+.problem-bubble p{
+  font-size:15px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.problem-bubble:hover{
   transform:translateY(-6px);
 }
 
-.problem-card:hover::before{
-  opacity:1;
+/* RIGHT SIDE ORBS */
+.problems-visual{
+  position:relative;
+  height:420px;
 }
 
-.problem-card h3{
-  font-size:20px;
-  font-weight:500;
-  margin-bottom:14px;
+.problem-orb{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(42px);
+  opacity:.8;
 }
 
-.problem-card p{
-  font-size:15px;
-  line-height:1.6;
-  color:var(--muted);
+.orb-1{
+  width:300px;
+  height:300px;
+  background:radial-gradient(circle, rgba(125,183,255,.35), transparent 70%);
+  top:40px;
+  right:40px;
 }
+
+.orb-2{
+  width:200px;
+  height:200px;
+  background:radial-gradient(circle, rgba(125,183,255,.25), transparent 70%);
+  bottom:40px;
+  left:40px;
+}
+
+.orb-3{
+  width:120px;
+  height:120px;
+  background:radial-gradient(circle, rgba(125,183,255,.2), transparent 70%);
+  top:160px;
+  left:180px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .problems-layout{
+    grid-template-columns:1fr;
+  }
+
+  .problems-visual{
+    height:260px;
+  }
+}
+
 
   /* ================= AI AUTOMATION GRID ================= */
 
@@ -624,51 +670,63 @@ body {
   </div>
 </section>
 
-  <section class="problems-section" id="problems">
+<section class="problems-section" id="problems">
   <div class="problems-inner reveal">
 
     <h2 class="problems-title">
-      The real problems<br>
-      <span>holding businesses back</span>
+      What’s <span>holding your business back</span>
     </h2>
 
-    <div class="problems-grid">
+    <div class="problems-layout">
 
-      <div class="problem-card">
-        <h3>Leads fall through the cracks</h3>
-        <p>
-          Messages go unanswered, follow-ups are inconsistent,
-          and hot leads quietly disappear.
-        </p>
+      <!-- LEFT: PROBLEM BUBBLES -->
+      <div class="problem-bubbles">
+
+        <div class="problem-bubble">
+          <span>01</span>
+          <div>
+            <h3>Slow Lead Response</h3>
+            <p>Leads wait hours (or days) for replies — and end up going to competitors.</p>
+          </div>
+        </div>
+
+        <div class="problem-bubble">
+          <span>02</span>
+          <div>
+            <h3>Manual Follow-Ups</h3>
+            <p>Teams waste time chasing leads manually instead of closing deals.</p>
+          </div>
+        </div>
+
+        <div class="problem-bubble">
+          <span>03</span>
+          <div>
+            <h3>CRM Chaos</h3>
+            <p>Contacts, notes, and deal stages fall out of sync across tools.</p>
+          </div>
+        </div>
+
+        <div class="problem-bubble">
+          <span>04</span>
+          <div>
+            <h3>Operational Bottlenecks</h3>
+            <p>Internal tasks pile up, slowing execution and burning resources.</p>
+          </div>
+        </div>
+
       </div>
 
-      <div class="problem-card">
-        <h3>Too many tools, no system</h3>
-        <p>
-          CRMs, inboxes, forms, spreadsheets — none of them
-          talk to each other properly.
-        </p>
-      </div>
-
-      <div class="problem-card">
-        <h3>Manual work kills momentum</h3>
-        <p>
-          Teams waste hours on repetitive tasks instead of
-          selling, building, or scaling.
-        </p>
-      </div>
-
-      <div class="problem-card">
-        <h3>Growth doesn’t scale operations</h3>
-        <p>
-          More customers means more chaos — unless automation
-          is built into the foundation.
-        </p>
+      <!-- RIGHT: VISUAL BUBBLES -->
+      <div class="problems-visual">
+        <div class="problem-orb orb-1"></div>
+        <div class="problem-orb orb-2"></div>
+        <div class="problem-orb orb-3"></div>
       </div>
 
     </div>
   </div>
 </section>
+
 
  <div class="automation-bento">
 
