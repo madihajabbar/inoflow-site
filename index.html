@@ -634,21 +634,25 @@ a.btn:active{
 .process-section{
   position: relative;
   padding: 160px 24px;
-  background: transparent; /* CRITICAL */
-  overflow: hidden;
+  background: transparent;
 }
 
-
-/* remove boxed feeling */
 .process-section::before{
   content:"";
   position:absolute;
-  inset:0;
+  top:-400px;
+  left:-200px;
+  right:-200px;
+  bottom:0;
+
   background:
-    radial-gradient(circle at 50% 0%, rgba(125,183,255,.10), transparent 55%),
-    radial-gradient(circle at 80% 30%, rgba(255,80,140,.08), transparent 60%);
+    radial-gradient(circle at 50% 20%, rgba(125,183,255,.12), transparent 65%),
+    radial-gradient(circle at 80% 40%, rgba(255,80,140,.08), transparent 70%);
+
   pointer-events:none;
+  z-index:0;
 }
+
 
 .process-container{
   max-width:1200px;
