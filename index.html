@@ -1023,6 +1023,25 @@ const observer = new IntersectionObserver(entries => {
 cards.forEach(card => observer.observe(card));
 </script>
 
+  <script>
+const problemCards = document.querySelectorAll('.problem-card');
+
+const problemObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    } else {
+      entry.target.classList.remove('active');
+    }
+  });
+}, {
+  threshold: 0.35
+});
+
+problemCards.forEach(card => problemObserver.observe(card));
+</script>
+
+
 
 </body>
 </html>
