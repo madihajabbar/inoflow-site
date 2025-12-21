@@ -1087,21 +1087,40 @@ for (let i = 0; i < COUNT; i++) {
 
 /* GLOW LAYER */
 function glow() {
-  const pulse = Math.sin(t * 0.01) * 80;
-  const g = ctx.createRadialGradient(
+  const pulse = Math.sin(t * 0.01) * 90;
+
+  // PRIMARY BLUE GLOW (dominant)
+  const blueGlow = ctx.createRadialGradient(
     w / 2 + mouse.x * 120,
     h / 2 + mouse.y * 120,
     0,
     w / 2,
     h / 2,
-    520 + pulse
+    560 + pulse
   );
 
-  g.addColorStop(0, "rgba(125,183,255,.45)");
-  g.addColorStop(0.45, "rgba(125,183,255,.18)");
-  g.addColorStop(1, "transparent");
+  blueGlow.addColorStop(0, "rgba(125,183,255,0.45)");
+  blueGlow.addColorStop(0.4, "rgba(125,183,255,0.18)");
+  blueGlow.addColorStop(1, "transparent");
 
-  ctx.fillStyle = g;
+  ctx.fillStyle = blueGlow;
+  ctx.fillRect(0, 0, w, h);
+
+  // SECONDARY PINK / RED ACCENT (subtle, atmospheric)
+  const accentGlow = ctx.createRadialGradient(
+    w * 0.65 - mouse.x * 80,
+    h * 0.35 - mouse.y * 80,
+    0,
+    w * 0.65,
+    h * 0.35,
+    420 + pulse * 0.6
+  );
+
+  accentGlow.addColorStop(0, "rgba(255,80,140,0.22)");
+  accentGlow.addColorStop(0.35, "rgba(255,80,140,0.10)");
+  accentGlow.addColorStop(1, "transparent");
+
+  ctx.fillStyle = accentGlow;
   ctx.fillRect(0, 0, w, h);
 }
 
