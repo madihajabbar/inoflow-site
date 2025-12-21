@@ -81,34 +81,18 @@ nav a:last-child{color:var(--accent)}
   to{opacity:1;transform:translate(-50%,0)}
 }
 
-  nav{
-  display:grid;
-  grid-template-columns:auto 1fr auto;
-  align-items:center;
+/* FLOATING LOGO (TOP-LEFT, NOT IN NAV) */
+.site-logo{
+  position:fixed;
+  top:26px;
+  left:32px;
+  z-index:20;
 }
 
-/* LEFT LOGO */
-.nav-left{
-  display:flex;
-  align-items:center;
-}
-
-.nav-logo{
-  height:26px;      /* matches premium SaaS scale */
+.site-logo img{
+  height:26px;      /* premium SaaS size */
   width:auto;
   display:block;
-}
-
-/* CENTER LINKS */
-.nav-center{
-  display:flex;
-  justify-content:center;
-  gap:26px;
-}
-
-/* RIGHT SPACER (keeps center truly centered) */
-.nav-right{
-  width:26px;
 }
 
 /* ================= HERO ================= */
@@ -513,21 +497,16 @@ body {
 
 <canvas id="bg"></canvas>
 
+<a href="/" class="site-logo">
+  <img src="logo.png" alt="Inoflow">
+</a>
+
 <nav>
-  <div class="nav-left">
-    <img src="logo.png" alt="Inoflow" class="nav-logo">
-  </div>
-
-  <div class="nav-center">
-    <a href="#process">Solutions</a>
-    <a href="#services">Problems</a>
-    <a href="#plans">Case Studies</a>
-    <a href="#contact">Book a Call ↗</a>
-  </div>
-
-  <div class="nav-right"></div>
+  <a href="#process">Solutions</a>
+  <a href="#services">Problems</a>
+  <a href="#plans">Case Studies</a>
+  <a href="#contact">Book a Call ↗</a>
 </nav>
-
 
 <section class="hero">
   <div class="hero-inner">
