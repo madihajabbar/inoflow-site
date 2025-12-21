@@ -629,99 +629,153 @@ a.btn:active{
   }
 }
 
-  .process-section {
-  background: radial-gradient(circle at top, rgba(125,183,255,0.08), transparent 60%), #05070c;
-  padding: 100px 20px;
+/* ================= PROCESS — MATCH SITE STYLE ================= */
+
+.process-section{
+  position: relative;
+  padding: 160px 24px;
 }
 
-.process-container {
-  max-width: 1200px;
-  margin: 0 auto;
+/* remove boxed feeling */
+.process-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(125,183,255,.10), transparent 55%),
+    radial-gradient(circle at 80% 30%, rgba(255,80,140,.08), transparent 60%);
+  pointer-events:none;
 }
 
-.process-header {
-  text-align: center;
-  margin-bottom: 60px;
+.process-container{
+  max-width:1200px;
+  margin:0 auto;
+  position:relative;
+  z-index:1;
 }
 
-.process-header h2 {
-  font-size: 2.4rem;
-  color: #ffffff;
-  margin-bottom: 12px;
+/* header rhythm */
+.process-header{
+  text-align:center;
+  margin-bottom:96px;
 }
 
-.process-header p {
-  color: #9aa3b2;
-  font-size: 1.05rem;
+.process-header h2{
+  font-size:clamp(42px,6vw,72px);
+  font-weight:500;
+  letter-spacing:-0.03em;
 }
 
-.process-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
+.process-header p{
+  font-size:17px;
+  color:var(--muted);
+  max-width:520px;
+  margin:18px auto 0;
 }
 
-.process-card {
-  background: rgba(20, 25, 40, 0.6);
-  border: 1px solid rgba(125, 183, 255, 0.15);
-  border-radius: 18px;
-  padding: 28px;
-  backdrop-filter: blur(12px);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+/* grid feels lighter */
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:32px;
 }
 
-.process-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(125, 183, 255, 0.12);
+/* cards now EMBED into environment */
+.process-card{
+  position:relative;
+  padding:40px;
+  border-radius:26px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.045),
+      rgba(255,255,255,.01)
+    );
+
+  border:1px solid rgba(255,255,255,.06);
+
+  backdrop-filter:blur(18px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.06),
+    0 20px 50px rgba(0,0,0,.35);
+
+  transition:
+    transform .6s cubic-bezier(.2,.8,.2,1),
+    box-shadow .6s ease;
 }
 
-.process-card .step {
-  display: inline-block;
-  font-size: 0.85rem;
-  color: #7db7ff;
-  margin-bottom: 10px;
-  letter-spacing: 0.05em;
+/* ambient glow like reference image */
+.process-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:26px;
+  background:radial-gradient(
+    circle at top left,
+    rgba(125,183,255,.22),
+    transparent 60%
+  );
+  opacity:.25;
+  pointer-events:none;
 }
 
-.process-card h3 {
-  font-size: 1.25rem;
-  color: #ffffff;
-  margin-bottom: 10px;
+/* hover stays subtle */
+.process-card:hover{
+  transform:translateY(-6px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 30px 70px rgba(0,0,0,.45);
 }
 
-.process-card p {
-  font-size: 0.95rem;
-  color: #9aa3b2;
-  line-height: 1.6;
+/* step label matches your other sections */
+.process-card .step{
+  font-size:13px;
+  color:var(--accent);
+  letter-spacing:.12em;
+  margin-bottom:14px;
+  display:block;
 }
 
-.process-cta {
-  margin-top: 60px;
-  text-align: center;
+/* text rhythm */
+.process-card h3{
+  font-size:22px;
+  font-weight:500;
+  margin-bottom:12px;
 }
 
-.process-cta .btn-primary {
-  background: #7db7ff;
-  color: #05070c;
-  padding: 14px 28px;
-  border-radius: 999px;
-  font-weight: 500;
-  text-decoration: none;
-  display: inline-block;
-  transition: opacity 0.2s ease;
+.process-card p{
+  font-size:15px;
+  line-height:1.65;
+  color:var(--muted);
 }
 
-.process-cta .btn-primary:hover {
-  opacity: 0.9;
+/* CTA blends instead of popping out */
+.process-cta{
+  margin-top:96px;
+  text-align:center;
 }
 
-.process-cta span {
-  display: block;
-  margin-top: 12px;
-  font-size: 0.85rem;
-  color: #9aa3b2;
+.process-cta .btn-primary{
+  background:rgba(125,183,255,.18);
+  border:1px solid rgba(125,183,255,.45);
+  color:#fff;
+  padding:14px 32px;
+  border-radius:999px;
+  transition:all .3s ease;
 }
 
+.process-cta .btn-primary:hover{
+  background:rgba(125,183,255,.28);
+}
+
+.process-cta span{
+  margin-top:14px;
+  display:block;
+  font-size:14px;
+  color:var(--muted);
+}
 
 /* ================= TESTIMONIALS ================= */
 
