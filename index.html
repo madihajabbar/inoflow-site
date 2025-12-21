@@ -248,7 +248,7 @@ h1 span{color:var(--accent)}
 /* RIGHT SIDE (CARDS) */
 .problems-right{
   position: relative;
-  padding-bottom: 340px; /* prevents dead space */
+  padding-bottom: 350px; /* prevents dead space */
 }
 
 .problem-card{
@@ -490,6 +490,90 @@ h1 span{color:var(--accent)}
   .automation-card-clean.large,
   .automation-card-clean.wide{
     grid-column:span 1;
+  }
+}
+
+  /* ================= PUZZLE AUTOMATION ================= */
+
+.automation-puzzle{
+  padding:140px 24px;
+}
+
+.automation-inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.automation-title{
+  font-size:clamp(42px,6vw,72px);
+  font-weight:500;
+  letter-spacing:-0.03em;
+  margin-bottom:64px;
+}
+
+.automation-title span{
+  color:var(--accent);
+}
+
+/* PUZZLE GRID */
+.automation-puzzle-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  grid-template-rows:auto auto;
+  gap:24px;
+}
+
+/* CARDS */
+.puzzle-card{
+  padding:36px;
+  border-radius:24px;
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.05),
+    rgba(255,255,255,.015)
+  );
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(16px);
+}
+
+.puzzle-card span{
+  font-size:13px;
+  color:var(--accent);
+  display:block;
+  margin-bottom:12px;
+}
+
+.puzzle-card h3{
+  font-size:22px;
+  font-weight:500;
+  margin-bottom:10px;
+}
+
+.puzzle-card p{
+  font-size:15px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* SHAPES */
+.puzzle-card.big{
+  grid-row:1 / span 2;
+}
+
+.puzzle-card.wide{
+  grid-column:2 / span 2;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .automation-puzzle-grid{
+    grid-template-columns:1fr;
+  }
+
+  .puzzle-card.big,
+  .puzzle-card.wide{
+    grid-column:auto;
+    grid-row:auto;
   }
 }
 
@@ -800,7 +884,7 @@ body {
 </section>
 
 
- <section class="automation-clean">
+<section class="automation-puzzle">
   <div class="automation-inner">
 
     <h2 class="automation-title">
@@ -808,10 +892,10 @@ body {
       <span>Runs Your Business</span>
     </h2>
 
-    <div class="automation-grid-clean">
+    <div class="automation-puzzle-grid">
 
-      <div class="automation-card-clean large">
-        <span class="step">01</span>
+      <div class="puzzle-card big">
+        <span>01</span>
         <h3>AI Receptionists</h3>
         <p>
           Intelligent agents that respond instantly to leads, answer questions,
@@ -819,45 +903,43 @@ body {
         </p>
       </div>
 
-      <div class="automation-card-clean">
-        <span class="step">02</span>
-        <h3>Lead Qualification & Routing</h3>
+      <div class="puzzle-card">
+        <span>02</span>
+        <h3>Lead Qualification</h3>
         <p>
-          We automate lead scoring, tagging, and routing so the right opportunities
-          reach the right team — without manual review.
+          Automatically score, tag, and route leads to the right team.
         </p>
       </div>
 
-      <div class="automation-card-clean">
-        <span class="step">03</span>
-        <h3>CRM & Pipeline Automation</h3>
+      <div class="puzzle-card">
+        <span>03</span>
+        <h3>CRM Automation</h3>
         <p>
-          Every interaction updates your CRM automatically — contacts, deal stages,
-          notes, and follow-ups stay perfectly in sync.
+          Every interaction updates your CRM in real time.
         </p>
       </div>
 
-      <div class="automation-card-clean">
-        <span class="step">04</span>
+      <div class="puzzle-card wide">
+        <span>04</span>
         <h3>Internal AI Agents</h3>
         <p>
-          AI agents handle internal tasks like reporting, summaries, task creation,
-          and operational workflows — reducing overhead across teams.
+          AI agents handle reporting, summaries, task creation, and internal workflows —
+          reducing overhead across teams.
         </p>
       </div>
 
-      <div class="automation-card-clean wide">
-        <span class="step">05</span>
+      <div class="puzzle-card">
+        <span>05</span>
         <h3>End-to-End Automation</h3>
         <p>
-          We connect tools, data, and AI models into a single automated system
-          that runs continuously in the background.
+          All tools, data, and AI models connected into one continuous system.
         </p>
       </div>
 
     </div>
   </div>
 </section>
+
 
 
   <section class="testimonial-section">
