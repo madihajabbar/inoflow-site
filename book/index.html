@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Book a Call — Inoflow</title>
+
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/favicon.png">
+
+<style>
+:root{
+  --bg:#05070c;
+  --text:#ffffff;
+  --muted:#9aa3b2;
+  --accent:#7db7ff;
+  --glass:rgba(20,25,40,.65);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Satoshi',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow:hidden; /* key for no scroll */
+}
+
+/* BACKGROUND */
+canvas{
+  position:fixed;
+  inset:0;
+  z-index:-3;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at center, transparent 25%, #05070c 75%);
+  z-index:-1;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:22px;
+  padding:8px 18px;
+  background:var(--glass);
+  backdrop-filter:blur(18px);
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  z-index:10;
+}
+
+nav a{
+  font-size:13px;
+  font-weight:500;
+  color:rgba(255,255,255,.7);
+  text-decoration:none;
+}
+
+nav a:hover{color:#fff}
+nav a:last-child{color:var(--accent)}
+
+/* LOGO */
+.site-logo{
+  position:fixed;
+  top:22px;
+  left:28px;
+  z-index:20;
+}
+
+.site-logo img{
+  height:24px;
+}
+
+/* CONTENT */
+.wrap{
+  max-width:1100px;
+  height:100vh;
+  margin:0 auto;
+  padding:96px 24px 40px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+h1{
+  font-size:clamp(34px,4.8vw,52px);
+  font-weight:500;
+  letter-spacing:-0.03em;
+  margin-bottom:10px;
+}
+
+h1 span{color:var(--accent)}
+
+p{
+  max-width:520px;
+  margin-bottom:22px;
+  font-size:15px;
+  color:var(--muted);
+}
+
+/* CALENDAR */
+.calendly-embed{
+  width:100%;
+  max-width:900px;
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(16px);
+}
+
+.calendly-embed iframe{
+  width:100%;
+  height:540px; /* tuned for one-screen */
+  border:0;
+}
+
+/* FOOTER */
+footer{
+  position:fixed;
+  bottom:18px;
+  width:100%;
+  font-size:13px;
+  color:var(--muted);
+}
+
+.footer-inner{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.footer-links{
+  display:flex;
+  gap:18px;
+}
+
+.footer-links a{
+  color:var(--muted);
+  text-decoration:none;
+}
+
+.footer-links a:hover{color:#fff}
+
+/* MOBILE */
+@media(max-width:900px){
+  body{overflow:auto}
+  .wrap{height:auto;padding:120px 20px 80px}
+  .calendly-embed iframe{height:700px}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<a href="/" class="site-logo">
+  <img src="/logo.png" alt="Inoflow">
+</a>
+
+<nav>
+  <a href="/#problems">Problems</a>
+  <a href="/#solutions">Solutions</a>
+  <a href="/#case-studies">Case Studies</a>
+  <a href="/book/">Book a Call ↗</a>
+</nav>
+
+<section class="wrap">
+  <h1>
+    Book a <span>Free</span><br>
+    AI Automation Call
+  </h1>
+
+  <p>
+    Choose a time that works.  
+    We’ll identify what to automate first to save time and drive revenue.
+  </p>
+
+  <div class="calendly-embed">
+    <iframe
+      src="https://calendly.com/inoflowagency/30min">
+    </iframe>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>© 2025 Inoflow</div>
+    <div class="footer-links">
+      <a href="/#problems">Problems</a>
+      <a href="/#solutions">Solutions</a>
+      <a href="/#case-studies">Case Studies</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* BACKGROUND ANIMATION */
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+let w,h,particles=[],t=0;
+
+function resize(){
+  w=canvas.width=window.innerWidth;
+  h=canvas.height=window.innerHeight;
+}
+window.addEventListener("resize",resize);
+resize();
+
+for(let i=0;i<200;i++){
+  particles.push({
+    x:Math.random()*w,
+    y:Math.random()*h,
+    r:Math.random()*1.8+.3,
+    a:Math.random()*Math.PI*2,
+    s:Math.random()*.6+.2,
+    o:Math.random()*.6+.15
+  });
+}
+
+function animate(){
+  ctx.clearRect(0,0,w,h);
+  const glow=ctx.createRadialGradient(w/2,h/2,0,w/2,h/2,560);
+  glow.addColorStop(0,"rgba(125,183,255,.35)");
+  glow.addColorStop(1,"transparent");
+  ctx.fillStyle=glow;
+  ctx.fillRect(0,0,w,h);
+
+  for(const p of particles){
+    p.a+=.002;
+    p.x+=Math.cos(p.a)*p.s;
+    p.y+=Math.sin(p.a)*p.s;
+    if(p.x<0)p.x=w;if(p.x>w)p.x=0;
+    if(p.y<0)p.y=h;if(p.y>h)p.y=0;
+    ctx.fillStyle=`rgba(255,255,255,${p.o})`;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+  }
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
