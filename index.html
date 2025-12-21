@@ -209,104 +209,114 @@ h1 span{color:var(--accent)}
 /* ================= STICKY PROBLEMS ================= */
 
 .problems-sticky{
-  min-height:300vh;
-  padding:120px 24px;
+  position: relative;
+  padding: 120px 24px;
 }
 
 .problems-wrap{
-  max-width:1200px;
-  margin:0 auto;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
 }
 
+/* LEFT SIDE (TEXT) */
 .problems-left{
-  position:sticky;
-  top:120px;
-  height:fit-content;
+  position: sticky;
+  top: 120px;
+  height: fit-content;
 }
 
 .problems-left h2{
-  font-size:clamp(42px,6vw,72px);
-  font-weight:500;
-  letter-spacing:-0.03em;
-  margin-bottom:20px;
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
 }
 
 .problems-left span{
-  color:var(--accent);
+  color: var(--accent);
 }
 
 .problems-left p{
-  font-size:17px;
-  color:var(--muted);
-  max-width:420px;
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 420px;
 }
 
-/* RIGHT STACK */
+/* RIGHT SIDE (CARDS) */
 .problems-right{
-  position:relative;
-  height:100%;
+  position: relative;
+  padding-bottom: 120px; /* prevents dead space */
 }
 
 .problem-card{
-  position:sticky;
-  top:140px;
-  padding:36px;
-  border-radius:24px;
-  margin-bottom:120px;
+  position: sticky;
+  top: 140px;
 
-  background:linear-gradient(
+  padding: 36px;
+  border-radius: 24px;
+  margin-bottom: 48px;
+
+  background: linear-gradient(
     180deg,
     rgba(255,255,255,.05),
     rgba(255,255,255,.015)
   );
-  border:1px solid rgba(255,255,255,.08);
-  backdrop-filter:blur(16px);
+  border: 1px solid rgba(255,255,255,.08);
+  backdrop-filter: blur(16px);
 
-  transform:translateY(80px) scale(.95);
-  opacity:0;
+  transform: translateY(60px) scale(.97);
+  opacity: 0;
+
   transition:
     transform .6s cubic-bezier(.2,.8,.2,1),
     opacity .6s ease;
 }
 
 .problem-card span{
-  color:var(--accent);
-  font-size:14px;
-  display:block;
-  margin-bottom:12px;
+  color: var(--accent);
+  font-size: 14px;
+  display: block;
+  margin-bottom: 12px;
 }
 
 .problem-card h3{
-  font-size:22px;
-  font-weight:500;
-  margin-bottom:10px;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 10px;
 }
 
 .problem-card p{
-  color:var(--muted);
-  font-size:15px;
-  line-height:1.6;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 /* ACTIVE STATE */
 .problem-card.active{
-  transform:translateY(0) scale(1);
-  opacity:1;
+  transform: translateY(0) scale(1);
+  opacity: 1;
 }
 
 /* MOBILE */
-@media(max-width:900px){
+@media(max-width: 900px){
   .problems-wrap{
-    grid-template-columns:1fr;
+    grid-template-columns: 1fr;
   }
 
   .problems-left{
-    position:relative;
-    top:auto;
-    margin-bottom:60px;
+    position: relative;
+    top: auto;
+    margin-bottom: 60px;
+  }
+
+  .problem-card{
+    position: relative;
+    top: auto;
+    transform: none;
+    opacity: 1;
   }
 }
 
@@ -1028,23 +1038,24 @@ cards.forEach(card => observer.observe(card));
 </script>
 
   <script>
+
 const problemCards = document.querySelectorAll('.problem-card');
 
-const problemObserver = new IntersectionObserver(entries => {
+const cardObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('active');
-    } else {
-      entry.target.classList.remove('active');
     }
   });
 }, {
-  threshold: 0.35
+  threshold: 0.5
 });
 
-problemCards.forEach(card => problemObserver.observe(card));
+problemCards.forEach(card => cardObserver.observe(card));
+
 </script>
 
+  
 
 
 </body>
