@@ -206,6 +206,83 @@ h1 span{color:var(--accent)}
   margin:24px 0;
 }
 
+/* ================= PROBLEMS SECTION ================= */
+
+.problems-section{
+  padding:140px 24px;
+}
+
+.problems-inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.problems-title{
+  font-size:clamp(42px,6vw,72px);
+  font-weight:500;
+  letter-spacing:-0.03em;
+  margin-bottom:80px;
+}
+
+.problems-title span{
+  color:var(--accent);
+}
+
+.problems-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:28px;
+}
+
+.problem-card{
+  position:relative;
+  padding:36px;
+  border-radius:22px;
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,0.035),
+    rgba(255,255,255,0.01)
+  );
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(14px);
+  transition:all .6s cubic-bezier(.2,.8,.2,1);
+}
+
+.problem-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:22px;
+  background:radial-gradient(
+    circle at top left,
+    rgba(255,120,120,.18),
+    transparent 60%
+  );
+  opacity:0;
+  transition:.6s;
+  pointer-events:none;
+}
+
+.problem-card:hover{
+  transform:translateY(-6px);
+}
+
+.problem-card:hover::before{
+  opacity:1;
+}
+
+.problem-card h3{
+  font-size:20px;
+  font-weight:500;
+  margin-bottom:14px;
+}
+
+.problem-card p{
+  font-size:15px;
+  line-height:1.6;
+  color:var(--muted);
+}
+
   /* ================= AI AUTOMATION GRID ================= */
 
 .automation-section {
@@ -504,10 +581,10 @@ body {
 </a>
 
 <nav>
-  <a href="#process">Solutions</a>
-  <a href="#services">Problems</a>
-  <a href="#plans">Case Studies</a>
-  <a href="#contact">Book a Call ↗</a>
+  <a href="#solutions">Solutions</a>
+  <a href="#problems">Problems</a>
+  <a href="#case-studies">Case Studies</a>
+  <a href="#book">Book a Call ↗</a>
 </nav>
 
 <section class="hero">
@@ -540,10 +617,56 @@ body {
     <div class="badge">✨ AI Automation Agency</div>
 
     <p class="subtitle">
-      inoflow designs intelligent workflows for lead qualification,
+      Inoflow designs intelligent workflows for lead qualification,
       CRM updates, follow-ups, internal operations, and customer communication —
       all running autonomously.
     </p>
+  </div>
+</section>
+
+  <section class="problems-section" id="problems">
+  <div class="problems-inner reveal">
+
+    <h2 class="problems-title">
+      The real problems<br>
+      <span>holding businesses back</span>
+    </h2>
+
+    <div class="problems-grid">
+
+      <div class="problem-card">
+        <h3>Leads fall through the cracks</h3>
+        <p>
+          Messages go unanswered, follow-ups are inconsistent,
+          and hot leads quietly disappear.
+        </p>
+      </div>
+
+      <div class="problem-card">
+        <h3>Too many tools, no system</h3>
+        <p>
+          CRMs, inboxes, forms, spreadsheets — none of them
+          talk to each other properly.
+        </p>
+      </div>
+
+      <div class="problem-card">
+        <h3>Manual work kills momentum</h3>
+        <p>
+          Teams waste hours on repetitive tasks instead of
+          selling, building, or scaling.
+        </p>
+      </div>
+
+      <div class="problem-card">
+        <h3>Growth doesn’t scale operations</h3>
+        <p>
+          More customers means more chaos — unless automation
+          is built into the foundation.
+        </p>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -698,10 +821,10 @@ body {
     </div>
 
     <div class="footer-links">
-      <a href="#">Process</a>
-      <a href="#">Services</a>
-      <a href="#">Team</a>
-      <a href="#">Contact</a>
+      <a href="#">Solutions</a>
+      <a href="#">Problems</a>
+      <a href="#">Case Studies</a>
+      <a href="#">Book</a>
     </div>
   </div>
 </footer>
