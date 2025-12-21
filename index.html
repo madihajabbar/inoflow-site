@@ -629,6 +629,100 @@ a.btn:active{
   }
 }
 
+  .process-section {
+  background: radial-gradient(circle at top, rgba(125,183,255,0.08), transparent 60%), #05070c;
+  padding: 100px 20px;
+}
+
+.process-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.process-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.process-header h2 {
+  font-size: 2.4rem;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.process-header p {
+  color: #9aa3b2;
+  font-size: 1.05rem;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.process-card {
+  background: rgba(20, 25, 40, 0.6);
+  border: 1px solid rgba(125, 183, 255, 0.15);
+  border-radius: 18px;
+  padding: 28px;
+  backdrop-filter: blur(12px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.process-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(125, 183, 255, 0.12);
+}
+
+.process-card .step {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: #7db7ff;
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+}
+
+.process-card h3 {
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.process-card p {
+  font-size: 0.95rem;
+  color: #9aa3b2;
+  line-height: 1.6;
+}
+
+.process-cta {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.process-cta .btn-primary {
+  background: #7db7ff;
+  color: #05070c;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.2s ease;
+}
+
+.process-cta .btn-primary:hover {
+  opacity: 0.9;
+}
+
+.process-cta span {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #9aa3b2;
+}
+
+
 /* ================= TESTIMONIALS ================= */
 
 .testimonial-section {
@@ -812,8 +906,9 @@ body {
 <section class="hero">
   <div class="hero-inner">
     <h1>
-      <span>AI Automation</span>That<br>
-      Replaces
+      <span>AI Automation</span>
+      That
+      <br>Replaces
       <span>Manual Work</span>
     </h1>
 
@@ -951,6 +1046,51 @@ body {
   </div>
 </section>
 
+<section class="process-section" id="process">
+  <div class="process-container">
+    <div class="process-header">
+      <h2>How We Build Your AI Automation System</h2>
+      <p>A clear, transparent process — no black boxes, no guesswork.</p>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-card">
+        <span class="step">01</span>
+        <h3>Automation Audit</h3>
+        <p>We review how leads currently enter your business and identify exactly where time and money are being lost.</p>
+      </div>
+
+      <div class="process-card">
+        <span class="step">02</span>
+        <h3>System Design</h3>
+        <p>We design a custom AI workflow tailored to your business — including logic, integrations, and fail-safes.</p>
+      </div>
+
+      <div class="process-card">
+        <span class="step">03</span>
+        <h3>Build & Integration</h3>
+        <p>We build and integrate the system inside your existing tools or help you choose the right stack.</p>
+      </div>
+
+      <div class="process-card">
+        <span class="step">04</span>
+        <h3>Testing & Optimization</h3>
+        <p>We stress-test edge cases, bad inputs, and routing before anything goes live.</p>
+      </div>
+
+      <div class="process-card">
+        <span class="step">05</span>
+        <h3>Launch & Handoff</h3>
+        <p>We deploy the system, walk you through it, and ensure you fully own and understand it.</p>
+      </div>
+    </div>
+
+    <div class="process-cta">
+      <a href="#contact" class="btn-primary">Get a Free Automation Audit</a>
+      <span>No obligation. We’ll tell you honestly if automation makes sense.</span>
+    </div>
+  </div>
+</section>
 
 
   <section id="case-studies" class="testimonial-section">
