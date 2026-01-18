@@ -503,89 +503,76 @@ a.btn:active{
   }
 }
 
-  /* ================= PUZZLE AUTOMATION ================= */
+/* ================= MODERN AUTOMATION LAYOUT ================= */
 
-.automation-puzzle{
-  padding:140px 24px;
-}
-
-.automation-inner{
-  max-width:1200px;
-  margin:0 auto;
-}
-
-.automation-title{
-  font-size:clamp(42px,6vw,72px);
-  font-weight:500;
-  letter-spacing:-0.03em;
-  margin-bottom:64px;
-}
-
-.automation-title span{
-  color:var(--accent);
-}
-
-/* PUZZLE GRID */
-.automation-puzzle-grid{
+.automation-grid-modern{
   display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  grid-template-rows:auto auto;
-  gap:24px;
+  grid-template-columns:2fr 1fr;
+  grid-template-rows:auto auto auto;
+  gap:32px;
 }
 
-/* CARDS */
-.puzzle-card{
-  padding:36px;
-  border-radius:24px;
+.automation-card-modern{
+  padding:40px;
+  border-radius:26px;
+
   background:linear-gradient(
     180deg,
     rgba(255,255,255,.05),
     rgba(255,255,255,.015)
   );
+
   border:1px solid rgba(255,255,255,.08);
-  backdrop-filter:blur(16px);
+  backdrop-filter:blur(18px);
+
+  transition:transform .5s cubic-bezier(.2,.8,.2,1);
 }
 
-.puzzle-card span{
+.automation-card-modern:hover{
+  transform:translateY(-6px);
+}
+
+.automation-card-modern .step{
   font-size:13px;
   color:var(--accent);
+  letter-spacing:.12em;
   display:block;
+  margin-bottom:14px;
+}
+
+.automation-card-modern h3{
+  font-size:22px;
+  font-weight:500;
   margin-bottom:12px;
 }
 
-.puzzle-card h3{
-  font-size:22px;
-  font-weight:500;
-  margin-bottom:10px;
-}
-
-.puzzle-card p{
+.automation-card-modern p{
   font-size:15px;
   color:var(--muted);
   line-height:1.6;
 }
 
-/* SHAPES */
-.puzzle-card.big{
+/* HERO CARD */
+.automation-card-modern.main{
   grid-row:1 / span 2;
 }
 
-.puzzle-card.wide{
-  grid-column:2 / span 2;
+/* BOTTOM ROW */
+.automation-card-modern.wide{
+  grid-column:span 1;
 }
 
 /* MOBILE */
 @media(max-width:900px){
-  .automation-puzzle-grid{
+  .automation-grid-modern{
     grid-template-columns:1fr;
   }
 
-  .puzzle-card.big,
-  .puzzle-card.wide{
-    grid-column:auto;
+  .automation-card-modern.main{
     grid-row:auto;
   }
 }
+
 
 /* ================= BENTO LAYOUT ================= */
 
@@ -1039,53 +1026,61 @@ body {
       <span>Runs Your Business</span>
     </h2>
 
-    <div class="automation-puzzle-grid">
+   <div class="automation-grid-modern">
 
-      <div class="puzzle-card big">
-        <span>01</span>
-        <h3>AI Receptionists</h3>
-        <p>
-          Intelligent agents that respond instantly to leads, answer questions,
-          qualify prospects, and route conversations across web, SMS, and messaging platforms.
-        </p>
-      </div>
-
-      <div class="puzzle-card">
-        <span>02</span>
-        <h3>Lead Qualification</h3>
-        <p>
-          Automatically score, tag, and route leads to the right team.
-        </p>
-      </div>
-
-      <div class="puzzle-card">
-        <span>03</span>
-        <h3>CRM Automation</h3>
-        <p>
-          Every interaction updates your CRM in real time.
-        </p>
-      </div>
-
-      <div class="puzzle-card wide">
-        <span>04</span>
-        <h3>Internal AI Agents</h3>
-        <p>
-          AI agents handle reporting, summaries, task creation, and internal workflows —
-          reducing overhead across teams.
-        </p>
-      </div>
-
-      <div class="puzzle-card">
-        <span>05</span>
-        <h3>End-to-End Automation</h3>
-        <p>
-          All tools, data, and AI models connected into one continuous system.
-        </p>
-      </div>
-
-    </div>
+  <!-- LEFT / MAIN -->
+  <div class="automation-card-modern main">
+    <span class="step">01</span>
+    <h3>AI Receptionists</h3>
+    <p>
+      Intelligent agents that respond instantly to leads, answer questions,
+      qualify prospects, and route conversations across web, SMS, and messaging platforms —
+      so no inquiry ever waits.
+    </p>
   </div>
-</section>
+
+  <!-- RIGHT / TOP -->
+  <div class="automation-card-modern">
+    <span class="step">02</span>
+    <h3>Lead Qualification</h3>
+    <p>
+      Automatically score, tag, and route leads to the right team
+      based on intent and readiness.
+    </p>
+  </div>
+
+  <!-- RIGHT / BOTTOM -->
+  <div class="automation-card-modern">
+    <span class="step">03</span>
+    <h3>CRM Automation</h3>
+    <p>
+      Every interaction updates your CRM in real time —
+      clean data, zero manual entry.
+    </p>
+  </div>
+
+  <!-- BOTTOM LEFT -->
+  <div class="automation-card-modern wide">
+    <span class="step">04</span>
+    <h3>Internal AI Agents</h3>
+    <p>
+      AI agents handle reporting, summaries, task creation,
+      and internal workflows — reducing overhead across teams.
+    </p>
+  </div>
+
+  <!-- BOTTOM RIGHT -->
+  <div class="automation-card-modern wide">
+    <span class="step">05</span>
+    <h3>End-to-End Automation</h3>
+    <p>
+      All tools, data, and AI models connected into one
+      continuous, self-maintaining system.
+    </p>
+  </div>
+
+</div>
+
 
 <section class="process-section" id="process">
   <div class="process-container">
