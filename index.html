@@ -616,6 +616,124 @@ a.btn:active{
   }
 }
 
+  /* ================= AUTOMATION STAGE (DRIBBBLE STYLE) ================= */
+
+.automation-stage{
+  padding:160px 24px;
+}
+
+.automation-stage-inner{
+  max-width:1200px;
+  margin:0 auto;
+  text-align:center;
+}
+
+.automation-visual{
+  position:relative;
+  margin-top:120px;
+  height:520px;
+}
+
+/* CORE */
+.automation-core{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    rgba(125,183,255,.35),
+    rgba(125,183,255,.05)
+  );
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 0 80px rgba(125,183,255,.35);
+}
+
+.core-ring{
+  position:absolute;
+  inset:-18px;
+  border-radius:50%;
+  border:1px solid rgba(125,183,255,.25);
+}
+
+.core-content span{
+  font-size:12px;
+  color:var(--accent);
+  letter-spacing:.14em;
+}
+
+.core-content strong{
+  display:block;
+  font-size:18px;
+  font-weight:500;
+  margin-top:6px;
+}
+
+/* FLOATING CARDS */
+.automation-float{
+  position:absolute;
+  width:240px;
+  padding:24px;
+  border-radius:22px;
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.05),
+    rgba(255,255,255,.015)
+  );
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(18px);
+  text-align:left;
+}
+
+.automation-float span{
+  font-size:12px;
+  color:var(--accent);
+}
+
+.automation-float h4{
+  font-size:16px;
+  font-weight:500;
+  margin:8px 0;
+}
+
+.automation-float p{
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.5;
+}
+
+/* POSITIONS */
+.card-1{ top:0; left:50%; transform:translateX(-50%); }
+.card-2{ top:120px; left:0; }
+.card-3{ top:120px; right:0; }
+.card-4{ bottom:0; left:15%; }
+.card-5{ bottom:0; right:15%; }
+
+/* MOBILE */
+@media(max-width:900px){
+  .automation-visual{
+    height:auto;
+  }
+
+  .automation-core{
+    position:relative;
+    transform:none;
+    margin:0 auto 60px;
+  }
+
+  .automation-float{
+    position:relative;
+    width:100%;
+    margin-bottom:24px;
+  }
+}
+
+
 /* ================= PROCESS — MATCH SITE STYLE ================= */
 
 .process-section{
@@ -1018,68 +1136,60 @@ body {
 </section>
 
 
-<section id="solutions" class="automation-section">
-  <div class="automation-inner">
+<section id="solutions" class="automation-stage">
+  <div class="automation-stage-inner">
 
     <h2 class="automation-title">
       AI Automation That<br>
       <span>Runs Your Business</span>
     </h2>
 
-   <div class="automation-grid-modern">
+    <div class="automation-visual">
 
-  <!-- LEFT / MAIN -->
-  <div class="automation-card-modern main">
-    <span class="step">01</span>
-    <h3>AI Receptionists</h3>
-    <p>
-      Intelligent agents that respond instantly to leads, answer questions,
-      qualify prospects, and route conversations across web, SMS, and messaging platforms —
-      so no inquiry ever waits.
-    </p>
+      <!-- CORE -->
+      <div class="automation-core">
+        <div class="core-ring"></div>
+        <div class="core-content">
+          <span>AI CORE</span>
+          <strong>Automation Engine</strong>
+        </div>
+      </div>
+
+      <!-- FLOATING CARDS -->
+      <div class="automation-float card-1">
+        <span>01</span>
+        <h4>AI Receptionists</h4>
+        <p>Instant replies, booking, and lead handling — 24/7.</p>
+      </div>
+
+      <div class="automation-float card-2">
+        <span>02</span>
+        <h4>Lead Qualification</h4>
+        <p>Score and route leads automatically.</p>
+      </div>
+
+      <div class="automation-float card-3">
+        <span>03</span>
+        <h4>CRM Automation</h4>
+        <p>Every interaction synced in real time.</p>
+      </div>
+
+      <div class="automation-float card-4">
+        <span>04</span>
+        <h4>Internal AI Agents</h4>
+        <p>Summaries, reports, and task creation.</p>
+      </div>
+
+      <div class="automation-float card-5">
+        <span>05</span>
+        <h4>End-to-End Automation</h4>
+        <p>All tools connected into one system.</p>
+      </div>
+
+    </div>
+
   </div>
-
-  <!-- RIGHT / TOP -->
-  <div class="automation-card-modern">
-    <span class="step">02</span>
-    <h3>Lead Qualification</h3>
-    <p>
-      Automatically score, tag, and route leads to the right team
-      based on intent and readiness.
-    </p>
-  </div>
-
-  <!-- RIGHT / BOTTOM -->
-  <div class="automation-card-modern">
-    <span class="step">03</span>
-    <h3>CRM Automation</h3>
-    <p>
-      Every interaction updates your CRM in real time —
-      clean data, zero manual entry.
-    </p>
-  </div>
-
-  <!-- BOTTOM LEFT -->
-  <div class="automation-card-modern wide">
-    <span class="step">04</span>
-    <h3>Internal AI Agents</h3>
-    <p>
-      AI agents handle reporting, summaries, task creation,
-      and internal workflows — reducing overhead across teams.
-    </p>
-  </div>
-
-  <!-- BOTTOM RIGHT -->
-  <div class="automation-card-modern wide">
-    <span class="step">05</span>
-    <h3>End-to-End Automation</h3>
-    <p>
-      All tools, data, and AI models connected into one
-      continuous, self-maintaining system.
-    </p>
-  </div>
-
-</div>
+</section>
 
 
 <section class="process-section" id="process">
