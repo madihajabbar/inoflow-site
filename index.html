@@ -1050,52 +1050,58 @@ body {
   overflow:hidden;
 }
 
-.automation-image{
-  position:absolute;
-  inset:0;
-  z-index:0;
+.automation-panel{
+  margin-top:80px;
+  padding:64px;
+  border-radius:36px;
 
-  background:
-    linear-gradient(
-      90deg,
-      rgba(5,7,12,.55) 0%,
-      rgba(5,7,12,.75) 60%
-    ),
-    url("https://images.unsplash.com/photo-1634712282287-14ed57b9cc89?q=80&w=1600&auto=format&fit=crop");
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.06),
+    rgba(255,255,255,.02)
+  );
 
-  background-size:cover;
-  background-position:left center;
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(22px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 40px 120px rgba(0,0,0,.6);
 }
 
 
 /* CARD GRID */
 .automation-cards{
-  position:relative;
   display:grid;
   grid-template-columns:repeat(3, 1fr);
   gap:28px;
-  padding:60px;
-  z-index:2;
 }
+
 
 /* CARDS */
 .automation-card{
-  padding:28px;
-  border-radius:22px;
+  height:100%;
+  padding:32px;
+  border-radius:24px;
 
   background:linear-gradient(
     180deg,
-    rgba(255,255,255,.12),
-    rgba(255,255,255,.04)
+    rgba(255,255,255,.14),
+    rgba(255,255,255,.05)
   );
 
-  border:1px solid rgba(255,255,255,.14);
-  backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(18px);
+
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
 
   box-shadow:
-    0 12px 40px rgba(0,0,0,.35),
+    0 20px 60px rgba(0,0,0,.45),
     inset 0 1px 0 rgba(255,255,255,.08);
 }
+
 
 .automation-card span{
   font-size:12px;
@@ -1116,11 +1122,12 @@ body {
 
 /* FEATURED CARD */
 .automation-card.highlight{
-  border-color:rgba(125,183,255,.7);
-
-  box-shadow:
-    0 0 0 1px rgba(125,183,255,.4),
-    0 25px 70px rgba(125,183,255,.35);
+  border-color:rgba(125,183,255,.6);
+  background:linear-gradient(
+    180deg,
+    rgba(125,183,255,.18),
+    rgba(125,183,255,.06)
+  );
 }
 
 
@@ -1250,47 +1257,42 @@ body {
       <span>Runs Your Business</span>
     </h2>
 
-    <div class="automation-canvas">
+<div class="automation-panel">
+  <div class="automation-cards">
 
-      <!-- LEFT VISUAL -->
-      <div class="automation-image">
-        <!-- replace image later if you want -->
-      </div>
+    <div class="automation-card highlight">
+      <span>01</span>
+      <h3>AI Receptionists</h3>
+      <p>Instant replies, booking, and lead handling across web, SMS, and messaging.</p>
+    </div>
 
-      <!-- FLOATING CARDS -->
-      <div class="automation-cards">
+    <div class="automation-card">
+      <span>02</span>
+      <h3>Lead Qualification</h3>
+      <p>Automatically score and route leads based on intent.</p>
+    </div>
 
-        <div class="automation-card highlight">
-          <span>01</span>
-          <h3>AI Receptionists</h3>
-          <p>Instant replies, booking, and lead handling across web, SMS, and messaging.</p>
-        </div>
+    <div class="automation-card">
+      <span>03</span>
+      <h3>CRM Automation</h3>
+      <p>Every interaction synced to your CRM in real time.</p>
+    </div>
 
-        <div class="automation-card">
-          <span>02</span>
-          <h3>Lead Qualification</h3>
-          <p>Automatically score and route leads based on intent.</p>
-        </div>
+    <div class="automation-card">
+      <span>04</span>
+      <h3>Internal AI Agents</h3>
+      <p>Summaries, reports, task creation, and internal workflows.</p>
+    </div>
 
-        <div class="automation-card">
-          <span>03</span>
-          <h3>CRM Automation</h3>
-          <p>Every interaction synced to your CRM in real time.</p>
-        </div>
+    <div class="automation-card">
+      <span>05</span>
+      <h3>End-to-End Automation</h3>
+      <p>All tools connected into one continuous system.</p>
+    </div>
 
-        <div class="automation-card">
-          <span>04</span>
-          <h3>Internal AI Agents</h3>
-          <p>Summaries, reports, task creation, and internal workflows.</p>
-        </div>
+  </div>
+</div>
 
-        <div class="automation-card">
-          <span>05</span>
-          <h3>End-to-End Automation</h3>
-          <p>All tools connected into one continuous system.</p>
-        </div>
-
-      </div>
     </div>
 
   </div>
