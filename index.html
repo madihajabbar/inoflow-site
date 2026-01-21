@@ -1209,7 +1209,7 @@ body {
 /* HEADER */
 .service-header{
   display:grid;
-  grid-template-columns:60px 1fr 40px;
+  grid-template-columns:120px 1fr 40px;
   align-items:center;
 }
 
@@ -1242,10 +1242,15 @@ body {
 
 .service-body p{
   margin-top:24px;
-  max-width:520px;
+  margin-left:120px; /* aligns with header text */
+  max-width:none;
   font-size:17px;
   color:var(--muted);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
+
 
 /* ACTIVE STATE */
 .service-item.active{
@@ -1268,6 +1273,10 @@ body {
 .service-item.active .service-body{
   max-height:200px;
   opacity:1;
+}
+
+  .service-item.active{
+  padding-left:24px;
 }
 
 
