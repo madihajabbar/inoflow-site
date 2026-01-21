@@ -1175,6 +1175,102 @@ body {
   }
 }
 
+/* ================= SERVICES ACCORDION ================= */
+
+.services-section{
+  padding:160px 24px;
+}
+
+.services-inner{
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.services-label{
+  font-size:12px;
+  letter-spacing:.18em;
+  color:var(--muted);
+  margin-bottom:48px;
+}
+
+/* LIST */
+.services-list{
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+/* ITEM */
+.service-item{
+  border-bottom:1px solid rgba(255,255,255,.08);
+  padding:28px 0;
+  cursor:pointer;
+  transition:background .3s ease;
+}
+
+/* HEADER */
+.service-header{
+  display:grid;
+  grid-template-columns:60px 1fr 40px;
+  align-items:center;
+}
+
+.service-index{
+  font-size:13px;
+  color:var(--muted);
+}
+
+.service-header h3{
+  font-size:clamp(32px, 5vw, 56px);
+  font-weight:500;
+  letter-spacing:-0.02em;
+}
+
+.service-arrow{
+  font-size:20px;
+  color:var(--muted);
+  transition:transform .3s ease;
+}
+
+/* BODY (COLLAPSED BY DEFAULT) */
+.service-body{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transition:
+    max-height .5s ease,
+    opacity .4s ease;
+}
+
+.service-body p{
+  margin-top:24px;
+  max-width:520px;
+  font-size:17px;
+  color:var(--muted);
+}
+
+/* ACTIVE STATE */
+.service-item.active{
+  background:linear-gradient(
+    90deg,
+    rgba(125,183,255,.18),
+    transparent 60%
+  );
+}
+
+.service-item.active h3{
+  color:var(--accent);
+}
+
+.service-item.active .service-arrow{
+  color:var(--accent);
+  transform:translateX(6px);
+}
+
+.service-item.active .service-body{
+  max-height:200px;
+  opacity:1;
+}
+
+
   
 </style>
 </head>
@@ -1281,49 +1377,86 @@ body {
 </section>
 
 
-<section id="solutions" class="automation-visual-section">
-  <div class="automation-visual-inner">
+<section id="solutions" class="services-section">
+  <div class="services-inner">
 
-    <h2 class="automation-title">
-      AI Automation That<br>
-      <span>Runs Your Business</span>
-    </h2>
+    <div class="services-label">[ SERVICES ]</div>
 
-<div class="automation-panel">
-  <div class="automation-cards">
+    <div class="services-list">
 
-    <div class="automation-card highlight">
-      <span>01</span>
-      <h3>AI Receptionists</h3>
-      <p>Instant replies, booking, and lead handling across web, SMS, and messaging.</p>
+      <div class="service-item active">
+        <div class="service-header">
+          <span class="service-index">01</span>
+          <h3>AI Receptionists</h3>
+          <span class="service-arrow">↗</span>
+        </div>
+        <div class="service-body">
+          <p>
+            Instant replies, booking, and lead handling across web, SMS,
+            and messaging platforms — ensuring no lead is ever missed.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-header">
+          <span class="service-index">02</span>
+          <h3>Lead Qualification</h3>
+          <span class="service-arrow">↗</span>
+        </div>
+        <div class="service-body">
+          <p>
+            Automatically score, tag, and route leads based on intent,
+            readiness, and behavior.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-header">
+          <span class="service-index">03</span>
+          <h3>CRM Automation</h3>
+          <span class="service-arrow">↗</span>
+        </div>
+        <div class="service-body">
+          <p>
+            Every interaction synced to your CRM in real time —
+            clean data with zero manual entry.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-header">
+          <span class="service-index">04</span>
+          <h3>Internal AI Agents</h3>
+          <span class="service-arrow">↗</span>
+        </div>
+        <div class="service-body">
+          <p>
+            AI agents handle reporting, summaries, task creation,
+            and internal workflows automatically.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-item">
+        <div class="service-header">
+          <span class="service-index">05</span>
+          <h3>End-to-End Automation</h3>
+          <span class="service-arrow">↗</span>
+        </div>
+        <div class="service-body">
+          <p>
+            All tools, data, and AI systems connected into one
+            continuous, self-maintaining workflow.
+          </p>
+        </div>
+      </div>
+
     </div>
-
-    <div class="automation-card">
-      <span>02</span>
-      <h3>Lead Qualification</h3>
-      <p>Automatically score and route leads based on intent.</p>
-    </div>
-
-    <div class="automation-card">
-      <span>03</span>
-      <h3>CRM Automation</h3>
-      <p>Every interaction synced to your CRM in real time.</p>
-    </div>
-
-    <div class="automation-card">
-      <span>04</span>
-      <h3>Internal AI Agents</h3>
-      <p>Summaries, reports, task creation, and internal workflows.</p>
-    </div>
-
-    <div class="automation-card">
-      <span>05</span>
-      <h3>End-to-End Automation</h3>
-      <p>All tools connected into one continuous system.</p>
-    </div>
-
   </div>
-</div>
+</section>
 
     </div>
 
@@ -1682,9 +1815,20 @@ const cardObserver = new IntersectionObserver(entries => {
 
 problemCards.forEach(card => cardObserver.observe(card));
 
+
 </script>
 
-  
+  <script>
+const services = document.querySelectorAll(".service-item");
+
+services.forEach(item => {
+  item.addEventListener("click", () => {
+    services.forEach(i => i.classList.remove("active"));
+    item.classList.add("active");
+  });
+});
+</script>
+
 
 
 </body>
