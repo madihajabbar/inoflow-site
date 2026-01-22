@@ -139,18 +139,17 @@ nav a:last-child{color:var(--accent)}
     inset 0 1px 0 rgba(255,255,255,.12);
 
   text-align:left;
-  animation:floatY 4.5s ease-in-out infinite;
 
-  opacity:0;
-  animation:
-    floatY 4.5s ease-in-out infinite,
-    fadeInUp .8s ease forwards;
+  /* IMPORTANT */
+  --tilt: 0deg;
+  transform: translateY(0) rotate(var(--tilt));
+
+  animation: floatSoft 6.5s ease-in-out infinite;
+
+  z-index:1;
+  filter: blur(0.2px);
 }
 
-@keyframes fadeInUp{
-  from{opacity:0;transform:translateY(20px);}
-  to{opacity:1;transform:translateY(0);}
-  
 }
 
 /* text */
@@ -169,46 +168,48 @@ nav a:last-child{color:var(--accent)}
 /* SPREAD-OUT POSITIONS */
 
 .stat-1{
-  top:18%;
-  left:2%;
-  transform:rotate(-6deg);
-  animation-delay:0s;
+  top:8%;
+  left:3%;
+  --tilt:-6deg;
+  animation-duration:6.5s;
 }
 
 .stat-2{
-  top:68%;
+  top:76%;
   left:6%;
-  transform:rotate(4deg);
-  animation-delay:2s;
+  --tilt:4deg;
+  animation-duration:7.5s;
 }
 
 .stat-3{
-  top:22%;
-  right:3%;
-  transform:rotate(5deg);
-  animation-delay:1s;
+  top:10%;
+  right:4%;
+  --tilt:6deg;
+  animation-duration:6.8s;
 }
 
 .stat-4{
-  top:72%;
+  top:82%;
   right:6%;
-  transform:rotate(-4deg);
-  animation-delay:3s;
+  --tilt:-5deg;
+  animation-duration:8s;
 }
+
 
 
 /* FLOAT ANIMATION (IN PLACE) */
-@keyframes floatY{
+@keyframes floatSoft{
   0%{
-    transform:translateY(0) rotate(var(--r,0deg));
+    transform:translateY(0) rotate(var(--tilt));
   }
   50%{
-    transform:translateY(-26px) rotate(var(--r,0deg));
+    transform:translateY(-18px) rotate(var(--tilt));
   }
   100%{
-    transform:translateY(0) rotate(var(--r,0deg));
+    transform:translateY(0) rotate(var(--tilt));
   }
 }
+
 
 
 .stat-1{ animation-duration:6s; }
@@ -216,10 +217,6 @@ nav a:last-child{color:var(--accent)}
 .stat-3{ animation-duration:6.8s; }
 .stat-4{ animation-duration:8s; }
 
-.hero-stat{
-  z-index:1;
-  opacity:.85;
-}
 .hero-inner{
   position:relative;
   z-index:5;
