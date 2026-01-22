@@ -105,6 +105,110 @@ nav a:last-child{color:var(--accent)}
   padding:0 24px;
 }
 
+/* ================= HERO FLOATING STATS ================= */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+}
+
+/* container */
+.hero-stats{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+
+/* base card */
+.hero-stat{
+  position:absolute;
+  padding:14px 18px;
+  border-radius:14px;
+
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.14),
+    rgba(255,255,255,.06)
+  );
+
+  border:1px solid rgba(125,183,255,.35);
+  backdrop-filter:blur(14px);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.12);
+
+  text-align:left;
+  animation:floatY 4.5s ease-in-out infinite;
+
+  opacity:0;
+  animation:
+    floatY 4.5s ease-in-out infinite,
+    fadeInUp .8s ease forwards;
+}
+
+@keyframes fadeInUp{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+  
+}
+
+/* text */
+.hero-stat strong{
+  display:block;
+  font-size:16px;
+  font-weight:500;
+  color:#fff;
+}
+
+.hero-stat span{
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* INDIVIDUAL POSITIONS */
+.stat-1{
+  top:32%;
+  left:6%;
+  transform:rotate(-3deg);
+  animation-delay:0s;
+}
+
+.stat-2{
+  top:52%;
+  left:10%;
+  transform:rotate(2deg);
+  animation-delay:1.2s;
+}
+
+.stat-3{
+  top:34%;
+  right:8%;
+  transform:rotate(2deg);
+  animation-delay:.6s;
+}
+
+.stat-4{
+  top:56%;
+  right:12%;
+  transform:rotate(-2deg);
+  animation-delay:1.8s;
+}
+
+/* FLOAT ANIMATION (IN PLACE) */
+@keyframes floatY{
+  0%{ transform:translateY(0) rotate(var(--r,0deg)); }
+  50%{ transform:translateY(-14px) rotate(var(--r,0deg)); }
+  100%{ transform:translateY(0) rotate(var(--r,0deg)); }
+}
+
+/* MOBILE — HIDE (IMPORTANT) */
+@media(max-width:900px){
+  .hero-stats{
+    display:none;
+  }
+}
+
 .hero-inner{
   max-width:1200px;
   opacity:0;
@@ -1315,6 +1419,31 @@ body {
 
 <section class="hero">
   <div class="hero-inner">
+
+    <div class="hero-stats">
+
+  <div class="hero-stat stat-1">
+    <strong>6× ROI</strong>
+    <span>in 4 weeks</span>
+  </div>
+
+  <div class="hero-stat stat-2">
+    <strong>47% Faster</strong>
+    <span>lead response</span>
+  </div>
+
+  <div class="hero-stat stat-3">
+    <strong>24/7</strong>
+    <span>AI coverage</span>
+  </div>
+
+  <div class="hero-stat stat-4">
+    <strong>0 Missed</strong>
+    <span>follow-ups</span>
+  </div>
+
+</div>
+
     <h1>
       <span>AI Automation</span>
       That
