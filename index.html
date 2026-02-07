@@ -1417,6 +1417,102 @@ body {
   padding-left:24px;
 }
 
+/* ================= INDUSTRIES SCROLLER ================= */
+
+.industries-section{
+  padding:140px 0;
+  overflow:hidden;
+}
+
+.industries-inner{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+.industries-header{
+  margin-bottom:64px;
+}
+
+.industries-header h2{
+  font-size:clamp(42px,6vw,72px);
+  font-weight:500;
+  letter-spacing:-0.03em;
+}
+
+.industries-header span{
+  color:var(--accent);
+}
+
+.industries-header p{
+  margin-top:14px;
+  font-size:17px;
+  color:var(--muted);
+  max-width:420px;
+}
+
+/* TRACK */
+.industries-track{
+  display:flex;
+  gap:28px;
+  width:max-content;
+  animation: industriesScroll 40s linear infinite;
+}
+
+.industries-track:hover{
+  animation-play-state: paused;
+}
+
+/* CARD */
+.industry-card{
+  width:320px;
+  padding:36px;
+  border-radius:24px;
+
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.05),
+    rgba(255,255,255,.015)
+  );
+
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(16px);
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.06);
+
+  transition:transform .5s cubic-bezier(.2,.8,.2,1);
+}
+
+.industry-card:hover{
+  transform:translateY(-6px);
+}
+
+.industry-card h3{
+  font-size:22px;
+  font-weight:500;
+  margin-bottom:12px;
+}
+
+.industry-card p{
+  font-size:15px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* AUTO SCROLL */
+@keyframes industriesScroll{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .industries-track{
+    animation-duration:55s;
+  }
+}
 
   
 </style>
@@ -1504,6 +1600,57 @@ body {
     </p>
   </div>
 </section>
+
+  <section class="industries-section reveal">
+  <div class="industries-inner">
+
+    <div class="industries-header">
+      <h2>Industries <span>We Serve</span></h2>
+      <p>AI systems adapted to the workflows of each sector.</p>
+    </div>
+
+    <div class="industries-track">
+
+      <div class="industry-card">
+        <h3>Healthcare</h3>
+        <p>Patient intake, scheduling, follow-ups, and triage.</p>
+      </div>
+
+      <div class="industry-card">
+        <h3>Real Estate</h3>
+        <p>Lead qualification, viewing bookings, CRM sync.</p>
+      </div>
+
+      <div class="industry-card">
+        <h3>Home Services</h3>
+        <p>Quotes, dispatching, reminders, missed-call recovery.</p>
+      </div>
+
+      <div class="industry-card">
+        <h3>Education</h3>
+        <p>Admissions, student inquiries, onboarding workflows.</p>
+      </div>
+
+      <div class="industry-card">
+        <h3>Insurance</h3>
+        <p>Policy inquiries, renewals, and lead routing.</p>
+      </div>
+
+      <!-- DUPLICATE FOR LOOP -->
+      <div class="industry-card">
+        <h3>Healthcare</h3>
+        <p>Patient intake, scheduling, follow-ups, and triage.</p>
+      </div>
+
+      <div class="industry-card">
+        <h3>Real Estate</h3>
+        <p>Lead qualification, viewing bookings, CRM sync.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
 <section id="problems" class="problems-sticky">
   <div class="problems-wrap">
