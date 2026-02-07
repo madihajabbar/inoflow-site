@@ -443,6 +443,45 @@ a.btn:active{
   opacity: 1;
 }
 
+  /* PROBLEM CARD WITH ICON */
+.problem-card{
+  display:grid;
+  grid-template-columns:48px 1fr;
+  gap:20px;
+  align-items:flex-start;
+}
+
+/* ICON CONTAINER */
+.problem-icon{
+  width:44px;
+  height:44px;
+  border-radius:12px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:rgba(125,183,255,.14);
+  border:1px solid rgba(125,183,255,.35);
+
+  box-shadow:
+    0 0 24px rgba(125,183,255,.25),
+    inset 0 1px 0 rgba(255,255,255,.15);
+
+  flex-shrink:0;
+}
+
+/* ICON SVG */
+.problem-icon svg{
+  width:20px;
+  height:20px;
+  stroke:var(--accent);
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  fill:none;
+}
+
   
 /* MOBILE */
 @media(max-width: 900px){
@@ -1741,25 +1780,63 @@ body {
     <!-- RIGHT -->
     <div class="problems-right">
 
-      <div class="problem-card">
-        <h3>Slow lead response</h3>
-        <p>Leads don’t wait. Every minute without a reply loses money.</p>
-      </div>
+<div class="problem-card">
+  <div class="problem-icon">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 6v6l4 2" />
+      <circle cx="12" cy="12" r="9" />
+    </svg>
+  </div>
+  <div>
+    <h3>Slow lead response</h3>
+    <p>Leads don’t wait. Every minute without a reply loses money.</p>
+  </div>
+</div>
 
-      <div class="problem-card">
-        <h3>Manual follow-ups</h3>
-        <p>Teams waste hours chasing people instead of closing deals.</p>
-      </div>
 
-      <div class="problem-card">
-        <h3>Disconnected systems</h3>
-        <p>CRMs, inboxes, and tools never stay in sync.</p>
-      </div>
+<div class="problem-card">
+  <div class="problem-icon">
+    <svg viewBox="0 0 24 24">
+      <path d="M3 12h18" />
+      <path d="M12 3v18" />
+    </svg>
+  </div>
+  <div>
+    <h3>Manual follow-ups</h3>
+    <p>Teams waste hours chasing people instead of closing deals.</p>
+  </div>
+</div>
 
-      <div class="problem-card">
-        <h3>Operational bottlenecks</h3>
-        <p>Internal tasks pile up and slow execution.</p>
-      </div>
+
+<div class="problem-card">
+  <div class="problem-icon">
+    <svg viewBox="0 0 24 24">
+      <path d="M8 12h8" />
+      <path d="M12 8v8" />
+      <rect x="3" y="3" width="7" height="7" rx="2"/>
+      <rect x="14" y="14" width="7" height="7" rx="2"/>
+    </svg>
+  </div>
+  <div>
+    <h3>Disconnected systems</h3>
+    <p>CRMs, inboxes, and tools never stay in sync.</p>
+  </div>
+</div>
+
+
+<div class="problem-card">
+  <div class="problem-icon">
+    <svg viewBox="0 0 24 24">
+      <path d="M4 4h16v6H4z" />
+      <path d="M8 14h8v6H8z" />
+    </svg>
+  </div>
+  <div>
+    <h3>Operational bottlenecks</h3>
+    <p>Internal tasks pile up and slow execution.</p>
+  </div>
+</div>
+
 
     </div>
 
