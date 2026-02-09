@@ -1,1 +1,202 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inoflow - Book Your AI Strategy Session</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #FBFBF9;
+            --bg-nav: #FFFFFF;
+            --text-main: #18181B;
+            --text-secondary: #52525B;
+            --accent-purple: #8B5CF6; /* Your Inoflow Purple */
+            --accent-purple-light: #F5F3FF;
+            --border-subtle: #E4E4E7;
+            --font-sans: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --shadow-nav: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            font-weight: 300;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            padding-top: 140px; /* Space for the Nav Bar */
+        }
+
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+        /* --- NAVIGATION (Matches Main Site) --- */
+        header {
+            position: fixed;
+            top: 24px;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            padding: 0 24px;
+        }
+
+        .nav-pill {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            width: 100%;
+            max-width: 1200px;
+            height: 64px;
+            border-radius: 999px;
+            box-shadow: var(--shadow-nav);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8px 0 24px; 
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .logo img { height: 32px; width: auto; display: block; }
+
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        .nav-item {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-item:hover { color: var(--accent-purple); }
+
+        .btn-demo {
+            background: var(--accent-purple);
+            color: white;
+            height: 40px;
+            padding: 0 24px;
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            text-decoration: none;
+        }
+
+        /* --- BOOKING LAYOUT (Inkeep Style) --- */
+        .booking-split {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: start;
+            margin-top: 40px;
+        }
+
+        .content-side { position: sticky; top: 140px; }
+
+        .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent-purple);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 24px;
+            display: block;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #18181B 0%, #52525B 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subheadline {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 480px;
+        }
+
+        /* Ambient Glow Blobs */
+        .glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        .glow-1 { top: -100px; left: -100px; background: var(--accent-purple); }
+
+        @media (max-width: 1024px) {
+            .booking-split { grid-template-columns: 1fr; gap: 60px; }
+            .content-side { position: relative; top: 0; text-align: center; }
+            .subheadline { margin-left: auto; margin-right: auto; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow glow-1"></div>
+
+    <header>
+        <div class="nav-pill">
+            <a href="index.html" class="logo">
+                <img src="LOGO.png" alt="Inoflow Logo">
+            </a>
+            
+            <div class="nav-links">
+                <a href="index.html#services" class="nav-item">Services</a>
+                <a href="index.html#problems" class="nav-item">Problems</a>
+                <a href="index.html#solutions" class="nav-item">Solutions</a>
+            </div>
+
+            <a href="#" class="btn-demo">BOOK AN INTRO</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="booking-split">
+            
+            <div class="content-side">
+                <span class="eyebrow">Direct Strategy Call</span>
+                <h1>See how Inoflow <br>scales your agency.</h1>
+                <p class="subheadline">
+                    Schedule a 30-minute session to audit your current front-desk workflow and see exactly how our AI Receptionists eliminate missed revenue.
+                </p>
+                
+                <div style="margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--border-subtle);">
+                </div>
+            </div>
+
+            <div class="calendly-side">
+                <div class="calendly-inline-widget" data-url="https://calendly.com/inoflowagency/30min?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=8b5cf6" style="min-width:320px;height:750px;"></div>
+                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
