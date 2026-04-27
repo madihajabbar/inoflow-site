@@ -1740,46 +1740,50 @@
     if (sel) sel.value = val;
   }
 
-  function submitDemo() {
-    var name  = document.getElementById('demoName').value.trim();
-    var phone = document.getElementById('demoPhone').value.trim();
-    var use   = document.getElementById('demoUseCase').value;
+function submitDemo() {
+  var name  = document.getElementById('demoName').value.trim();
+  var phone = document.getElementById('demoPhone').value.trim();
+  var use   = document.getElementById('demoUseCase').value;
 
-    if (!name || !phone) {
-      alert('Please enter your name and phone number.');
-      return;
-    }
-
-    var btn = document.getElementById('demoBtn');
-    var orb = document.getElementById('demoOrb');
-    var status = document.getElementById('demoStatus');
-
-    btn.disabled = true;
-    btn.textContent = 'Connecting…';
-    btn.classList.add('calling-state');
-    orb.style.animation = 'orbCall 1.2s ease-in-out infinite';
-    status.innerHTML = '<span class="demo-status-dot"></span> Connecting agent…';
-
-    fetch('https://api.retellai.com/v2/create-phone-call', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        from_number: '+16479305147',
-        to_number: phone,
-        metadata: { name: name, use_case: use }
-      })
-    })
-    .then(function(r) { return r.json(); })
-    .catch(function() { return {}; })
-    .finally(function() {
-      setTimeout(function() {
-        document.getElementById('demoFormWrap').style.display = 'none';
-        document.getElementById('demoSuccess').classList.add('show');
-        orb.style.animation = 'orbCall 1.2s ease-in-out infinite';
-        status.innerHTML = '<span class="demo-status-dot"></span> Agent calling…';
-      }, 1800);
-    });
+  if (!name || !phone) {
+    alert('Please enter your name and phone number.');
+    return;
   }
+
+  var btn    = document.getElementById('demoBtn');
+  var orb    = document.getElementById('demoOrb');
+  var status = document.getElementById('demoStatus');
+
+  btn.disabled = true;
+  btn.textContent = 'Connecting…';
+  btn.classList.add('calling-state');
+  orb.style.animation = 'orbCall 1.2s ease-in-out infinite';
+  status.innerHTML = '<span class="demo-status-dot"></span> Connecting agent…';
+
+  fetch('https://api.retellai.com/v2/create-phone-call', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer key_738ac8075bf0aca877ace886ea48'
+    },
+    body: JSON.stringify({
+      from_number: '+16479305147',
+      to_number: phone,
+      agent_id: 'agent_105fbfbe7976fa326c00e7523d',
+      metadata: { name: name, use_case: use }
+    })
+  })
+  .then(function(r) { return r.json(); })
+  .catch(function() { return {}; })
+  .finally(function() {
+    setTimeout(function() {
+      document.getElementById('demoFormWrap').style.display = 'none';
+      document.getElementById('demoSuccess').classList.add('show');
+      orb.style.animation = 'orbCall 1.2s ease-in-out infinite';
+      status.innerHTML = '<span class="demo-status-dot"></span> Agent calling…';
+    }, 1800);
+  });
+}
 </script>
 
 <!-- CHALLENGES CASCADE -->
