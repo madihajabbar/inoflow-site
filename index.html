@@ -1457,37 +1457,170 @@
 
 
     /* ══════════════════════════════════════════════
-       CUSTOM CURSOR
+       CUSTOM CURSOR — desktop/hover only
     ══════════════════════════════════════════════ */
-    * { cursor: none !important; }
-    #cursor-dot {
-      position: fixed; z-index: 9999; pointer-events: none;
-      width: 8px; height: 8px; border-radius: 50%;
-      background: #5df8b8;
-      transform: translate(-50%,-50%);
-      transition: transform 0.08s ease, opacity 0.3s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
-      mix-blend-mode: normal;
-      box-shadow: 0 0 12px rgba(93,248,184,0.8);
+    @media (hover: hover) and (pointer: fine) {
+      * { cursor: none !important; }
+      #cursor-dot {
+        position: fixed; z-index: 9999; pointer-events: none;
+        width: 8px; height: 8px; border-radius: 50%;
+        background: #5df8b8;
+        transform: translate(-50%,-50%);
+        transition: transform 0.08s ease, opacity 0.3s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
+        mix-blend-mode: normal;
+        box-shadow: 0 0 12px rgba(93,248,184,0.8);
+      }
+      #cursor-ring {
+        position: fixed; z-index: 9998; pointer-events: none;
+        width: 40px; height: 40px; border-radius: 50%;
+        border: 1.5px solid rgba(93,248,184,0.5);
+        transform: translate(-50%,-50%);
+        transition: width 0.3s ease, height 0.3s ease, border-color 0.3s, opacity 0.3s;
+      }
+      #cursor-trail {
+        position: fixed; z-index: 9997; pointer-events: none;
+        width: 100px; height: 100px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(93,248,184,0.06) 0%, transparent 70%);
+        transform: translate(-50%,-50%);
+        transition: transform 0.5s ease;
+        pointer-events: none;
+      }
+      body.cursor-hover #cursor-dot { width: 14px; height: 14px; background: #fff; }
+      body.cursor-hover #cursor-ring { width: 60px; height: 60px; border-color: rgba(93,248,184,0.8); }
+      body.cursor-btn #cursor-dot { width: 48px; height: 48px; background: rgba(93,248,184,0.15); box-shadow: 0 0 0 1px rgba(93,248,184,0.4); }
+      body.cursor-btn #cursor-ring { opacity: 0; }
     }
-    #cursor-ring {
-      position: fixed; z-index: 9998; pointer-events: none;
-      width: 40px; height: 40px; border-radius: 50%;
-      border: 1.5px solid rgba(93,248,184,0.5);
-      transform: translate(-50%,-50%);
-      transition: width 0.3s ease, height 0.3s ease, border-color 0.3s, opacity 0.3s;
+    /* Hide cursor elements on touch */
+    @media (hover: none) {
+      #cursor-dot, #cursor-ring, #cursor-trail { display: none; }
     }
-    #cursor-trail {
-      position: fixed; z-index: 9997; pointer-events: none;
-      width: 100px; height: 100px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(93,248,184,0.06) 0%, transparent 70%);
-      transform: translate(-50%,-50%);
-      transition: transform 0.5s ease;
-      pointer-events: none;
+
+    /* ══════════════════════════════════════════════
+       HAMBURGER MENU
+    ══════════════════════════════════════════════ */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px; height: 36px;
+      padding: 6px;
+      background: none; border: none;
+      border-radius: 8px;
+      transition: background .2s;
     }
-    body.cursor-hover #cursor-dot { width: 14px; height: 14px; background: #fff; }
-    body.cursor-hover #cursor-ring { width: 60px; height: 60px; border-color: rgba(93,248,184,0.8); }
-    body.cursor-btn #cursor-dot { width: 48px; height: 48px; background: rgba(93,248,184,0.15); box-shadow: 0 0 0 1px rgba(93,248,184,0.4); }
-    body.cursor-btn #cursor-ring { opacity: 0; }
+    .nav-hamburger:hover { background: rgba(0,0,0,0.06); }
+    .nav-hamburger span {
+      display: block; width: 18px; height: 1.5px;
+      background: #111; border-radius: 2px;
+      transition: transform .3s ease, opacity .3s ease;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Mobile nav drawer */
+    .nav-mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      z-index: 190;
+      padding: 72px 24px 32px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      flex-direction: column;
+      gap: 4px;
+      transform: translateY(-100%);
+      transition: transform .35s cubic-bezier(.16,1,.3,1);
+    }
+    .nav-mobile-drawer.open { transform: translateY(0); }
+    .nav-mobile-drawer a {
+      display: block; padding: 14px 16px;
+      font-size: 16px; font-weight: 600; color: #111;
+      border-radius: 12px;
+      transition: background .2s;
+    }
+    .nav-mobile-drawer a:hover { background: rgba(0,0,0,0.05); }
+    .nav-mobile-drawer .drawer-cta {
+      margin-top: 12px;
+      background: #000; color: #fff;
+      text-align: center;
+      padding: 14px 20px;
+      border-radius: 12px;
+    }
+    .nav-mobile-drawer .drawer-cta:hover { background: #222; }
+
+    /* ══════════════════════════════════════════════
+       MOBILE ENHANCEMENTS
+    ══════════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      /* Show hamburger, hide from desktop */
+      .nav-hamburger { display: flex; }
+      .nav-mobile-drawer { display: flex; }
+
+      /* Shrink blobs to prevent horizontal overflow */
+      .blob-1 { width: 300px; height: 300px; }
+      .blob-2 { width: 240px; height: 240px; }
+      .blob-3 { width: 220px; height: 220px; }
+      .blob-4 { width: 200px; height: 200px; }
+
+      /* Hide oversized orbit rings */
+      .orbit-ring { display: none; }
+
+      /* Fix heading letter-spacing at small sizes */
+      h1.hero-h1 { letter-spacing: -1.5px; }
+      .challenges-header h2 { letter-spacing: -1.5px; }
+      .demo-header h2 { letter-spacing: -1.5px; }
+      .cta-h2 { letter-spacing: -1.5px; }
+      .comp-header-left h2 { letter-spacing: -1px; }
+
+      /* Section spacing */
+      #comparison { padding: 48px 0 40px; }
+      #challenges { padding: 48px 0 56px; }
+
+      /* Cascade grid — single column */
+      .cascade-grid { grid-template-columns: 1fr !important; gap: 10px; }
+      .cascade-col { margin-top: 0 !important; }
+      .chal-card { margin: 0 0 0; }
+
+      /* Comp header stack */
+      .comp-header { flex-direction: column; gap: 16px; margin-bottom: 28px; }
+      .comp-header-right { max-width: 100%; }
+
+      /* Phases hub */
+      .phases-hub { padding: 28px 18px; border-radius: 24px; }
+
+      /* Contact form inputs — 16px prevents iOS auto-zoom */
+      .cta-field input,
+      .cta-field textarea,
+      .cta-field select { font-size: 16px; padding: 13px 14px; }
+
+      /* Ensure all tap targets are at least 44px */
+      .btn-cta, .btn-hero-primary, .btn-hero-secondary, .btn-cta-hero, .btn-cta-submit { min-height: 44px; }
+      .nav-hamburger { min-width: 44px; min-height: 44px; }
+      .demo-tag { padding: 8px 16px; min-height: 36px; }
+
+      /* CTA form container padding */
+      .cta-body { padding: 36px 18px; }
+      .cta-form-wrap { margin-top: 24px; }
+    }
+
+    /* ── Small mobile (≤ 480px) ── */
+    @media (max-width: 480px) {
+      .cta-form-grid { grid-template-columns: 1fr; }
+      .cta-form-grid .full { grid-column: 1; }
+      .comp-problems-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Touch device overrides ── */
+    @media (hover: none) and (pointer: coarse) {
+      /* Prevent tilt effect from firing on tap */
+      .tilt-card { transform: none !important; }
+      /* Disable parallax transforms */
+      .hero-content, .hero-stats { transform: none !important; }
+    }
 
     /* ══════════════════════════════════════════════
        PARTICLE CANVAS
@@ -1700,7 +1833,9 @@
 <nav>
   <div class="nav-pill">
     <a href="#" class="nav-logo">
-      <img src="LOGO.png"
+      <img src="LOGO.png" alt="Inoflow" />
+    </a>
+    <ul class="nav-links">
       <li><a href="#comparison">Services</a></li>
       <li><a href="#challenges">Solutions</a></li>
       <li><a href="#phases">How It Works</a></li>
@@ -1709,8 +1844,37 @@
       Book an Intro
       <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="nav-mobile-drawer" id="navDrawer">
+  <a href="#comparison" onclick="closeDrawer()">Services</a>
+  <a href="#challenges" onclick="closeDrawer()">Solutions</a>
+  <a href="#phases" onclick="closeDrawer()">How It Works</a>
+  <a href="book.html" target="_blank" class="drawer-cta">Book an Intro →</a>
+</div>
+
+<script>
+(function() {
+  var btn = document.getElementById('navHamburger');
+  var drawer = document.getElementById('navDrawer');
+  if (!btn || !drawer) return;
+  btn.addEventListener('click', function() {
+    var open = drawer.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  window.closeDrawer = function() {
+    drawer.classList.remove('open');
+    btn.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+})();
+</script>
 
 <!-- HERO -->
 <section id="hero">
@@ -2492,6 +2656,7 @@ async function submitCtaForm() {
    CUSTOM CURSOR
 ══════════════════════════════════════════════════════════ */
 (function() {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
   var dot   = document.getElementById('cursor-dot');
   var ring  = document.getElementById('cursor-ring');
   var trail = document.getElementById('cursor-trail');
@@ -2650,6 +2815,7 @@ async function submitCtaForm() {
    HERO BLOB PARALLAX ON MOUSE
 ══════════════════════════════════════════════════════════ */
 (function() {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
   var hero = document.getElementById('hero');
   var blobs = hero ? hero.querySelectorAll('.blob') : [];
   if (!blobs.length) return;
@@ -2672,6 +2838,7 @@ async function submitCtaForm() {
    3D CARD TILT ON MOUSE
 ══════════════════════════════════════════════════════════ */
 (function() {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
   function initTilt(selector) {
     document.querySelectorAll(selector).forEach(function(card) {
       card.classList.add('tilt-card');
@@ -2731,6 +2898,7 @@ async function submitCtaForm() {
    MAGNETIC BUTTONS
 ══════════════════════════════════════════════════════════ */
 (function() {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
   document.querySelectorAll('.btn-cta, .btn-hero-primary, .btn-hero-secondary').forEach(function(btn) {
     btn.classList.add('btn-ripple', 'btn-magnetic');
     btn.addEventListener('mousemove', function(e) {
@@ -2851,6 +3019,7 @@ async function submitCtaForm() {
    SCROLL PARALLAX on section backgrounds
 ══════════════════════════════════════════════════════════ */
 (function() {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
   var lastScroll = window.scrollY;
 
   window.addEventListener('scroll', function() {
