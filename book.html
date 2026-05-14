@@ -355,12 +355,11 @@
 
     /* ── Mobile (≤ 768px) ── */
     @media (max-width: 768px) {
-      nav { padding: 10px 14px; }
-      .nav-logo img { height: 22px; }
-      .btn-cta { padding: 8px 14px; font-size: 12px; }
-      .btn-cta svg { display: none; }
-      .nav-pill { padding: 5px 5px 5px 14px; border-radius: 10px; }
-      .nav-pill { padding: 5px 5px 5px 12px; }
+nav { padding: 10px 14px; }
+.nav-logo img { height: 22px; }
+.nav-pill .btn-cta { display: none; }
+.btn-cta svg { display: none; }
+.nav-pill { padding: 5px 10px 5px 12px; border-radius: 10px; justify-content: space-between; }
 
       /* Shrink blobs to prevent horizontal overflow */
       .blob-1 { width: 280px; height: 280px; }
